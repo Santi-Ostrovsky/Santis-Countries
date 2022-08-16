@@ -1,11 +1,11 @@
 const { DataTypes } = require("sequelize");
-// Exportamos una funcion que define el modelo
+// Exportamos una función que define el modelo
 // Luego le inyectamos la conexión a sequelize.
 module.exports = (sequelize) => {
   // define country model
   //
   sequelize.define(
-    "country",
+    "Country",
     {
       // Required properties
       id: {
@@ -30,7 +30,7 @@ module.exports = (sequelize) => {
       },
       capital: {
         type: DataTypes.STRING,
-        //   defaultValue: this.name,
+        // defaultValue: this.getDataValue(name),
         allowNull: false,
         unique: "country-capital-flag",
       },
@@ -39,7 +39,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       area: {
-        type: DataTypes.STRING,
+        type: DataTypes.FLOAT,
         allowNull: false,
       },
       population: {
@@ -48,26 +48,26 @@ module.exports = (sequelize) => {
       },
       //
       // Extra properties
-      region: {
+      officialName: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
       },
-      independent: {
-        type: DataTypes.BOOLEAN,
+      region: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
       unMember: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
       },
-      currencies: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+      // currencies: {
+      //   type: DataTypes.STRING,
+      //   allowNull: false,
+      // },
       maps: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
       },
       timezones: {
         type: DataTypes.STRING,
@@ -76,15 +76,9 @@ module.exports = (sequelize) => {
     },
     //
     // Modify default timestamp titles
-    {
-      timestamps: true,
-      createdAt: "Created",
-      updatedAtAt: "Updated",
-    },
+    { timestamps: false },
     //
     // Modify default table name
-    {
-      tableName: "countries",
-    }
+    { tableName: "countries" }
   );
 };

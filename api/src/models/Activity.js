@@ -1,20 +1,20 @@
 const { DataTypes } = require("sequelize");
-// Exportamos una funcion que define el modelo
+// Exportamos una función que define el modelo
 // Luego le inyectamos la conexión a sequelize.
 module.exports = (sequelize) => {
   // define activity model
 
   // Required properties
   sequelize.define(
-    "activity",
+    "Activity",
     {
-      id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
-        primaryKey: true,
-        allowNull: false,
-        unique: true,
-      },
+      //   id: {
+      //     type: DataTypes.UUID,
+      //     defaultValue: DataTypes.UUIDV4,
+      //     primaryKey: true,
+      //     allowNull: false,
+      //     unique: true,
+      //   },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -40,16 +40,10 @@ module.exports = (sequelize) => {
     },
     //
     // Modify default timestamp titles
-    {
-      timestamps: true,
-      createdAt: "Created",
-      updatedAtAt: "Updated",
-    },
+    { timestamps: false },
     //
     // Modify default table name
-    {
-      tableName: "activities",
-    }
+    { tableName: "activities" }
   );
 };
 
