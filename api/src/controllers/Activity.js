@@ -62,7 +62,7 @@ const deleteActivity = async (id) => {
     }
     const msg = `Activity does not exist`;
     console.log(msg);
-    return msg;
+    return activity;
   } catch (e) {
     // Error msg in case row delete failed
     console.error(`Error @ controllers/deleteActivity --> ${e}`);
