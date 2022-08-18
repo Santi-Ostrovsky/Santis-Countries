@@ -22,8 +22,8 @@ const getCountries = async () => {
           area: c.area,
           population: c.population,
 
-          //   // Extra properties
-          officialName: c.name.official ? c.name.official : "Not Found", // this.name,
+          // Extra properties
+          officialName: c.name.official ? c.name.official : c.name.common, // this.name,
           region: c.region,
           unMember: c.unMember,
           //   currencies: c.currencies[Object.keys(c.currencies)[0]].name,
@@ -38,20 +38,32 @@ const getCountries = async () => {
     return msg;
   } catch (e) {
     // Error msg in case the request failed
-    console.error(`Error @ controllers/getCountries --→ ${e.message}`);
+    console.error(`Error @ controllers/getCountries --→ ${e}`);
   }
 };
 
 // findAll COUNTRIES once saved in DB
-const findCountries = async () => {
+const findCountries = async (name) => {
   try {
-    const find = await Country.findAll();
-    // Success msg for DB countries' data being called
-    console.log(`findCountries was executed successfully.`);
-    return find;
+    let find;
+    // If name is given, find only ONE Country
+    if (name) {
+      find = await Country.findOne(
+        { where: { name } },
+        { include: [Activity] }
+      );
+      const arr = [find];
+      console.log(`findCountries(name) was executed successfully.`);
+      return arr;
+    } else {
+      // If name is NOT given, bring all Countries from DB
+      find = await Country.findAll();
+      console.log(`findCountries was executed successfully.`);
+      return find;
+    }
   } catch (e) {
     // Error msg in case data call failed
-    console.error(`Error @ controllers/findCountries --→ ${e.message}`);
+    console.error(`Error @ controllers/findCountries --→ ${e}`);
   }
 };
 
@@ -60,11 +72,15 @@ const findCountries = async () => {
 // get countries by id
 const getCountryById = async (id) => {
   try {
+    // Attempt to retrieve a single result from DB through ID (including activities)
     return await Country.findByPk(id, { include: [Activity] });
   } catch (e) {
-    console.error(`Error @ controllers/getCountryById --→ ${e.message}`);
+    // Error msg in casa data call failed
+    console.error(`Error @ controllers/getCountryById --→ ${e}`);
   }
 };
+
+// ------------------------------------------------------------
 
 // get countries by name
 
