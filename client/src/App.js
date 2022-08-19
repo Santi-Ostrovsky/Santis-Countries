@@ -1,13 +1,15 @@
+import { Routes, Route } from "react-router-dom";
+import Landing from "../src/components/Landing";
 import "./styles/App.css";
-import { Router, Routes, Route } from "react-router";
 
 function App() {
   return (
-    // <Router>
-    <div className="App">
-      <h1>Santi's Countries</h1>
-    </div>
-    // </Router>
+    <Routes>
+      {/* <div className="App"> */}
+      {/* <h1>Santi's Countries</h1> */}
+      <Route exact strict path="/" element={<Landing />}></Route>
+      {/* </div> */}
+    </Routes>
   );
 }
 
