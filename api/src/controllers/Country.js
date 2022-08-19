@@ -26,7 +26,7 @@ const getCountries = async () => {
           officialName: c.name.official ? c.name.official : c.name.common, // this.name,
           region: c.region,
           unMember: c.unMember,
-          //   currencies: c.currencies[Object.keys(c.currencies)[0]].name,
+          // currencies: c.currencies[Object.keys(c.currencies)[0]].name,
           maps: c.maps.googleMaps ? c.maps.googleMaps : "Not Found",
           timezones: c.timezones[0],
         },

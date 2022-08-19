@@ -63,7 +63,6 @@ module.exports = (sequelize) => {
       },
       // currencies: {
       //   type: DataTypes.STRING,
-      //   allowNull: false,
       // },
       maps: {
         type: DataTypes.STRING,
