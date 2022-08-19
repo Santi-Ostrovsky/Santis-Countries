@@ -33,9 +33,7 @@ const getCountries = async () => {
       })
     );
     // Success msg if an axios request was sent to the API
-    const msg = `Counties successfully added to database.`;
-    console.log(msg);
-    return msg;
+    console.log(`Counties successfully added to database.`);
   } catch (e) {
     // Error msg in case the request failed
     console.error(`Error @ controllers/getCountries --→ ${e}`);
@@ -59,6 +57,7 @@ const findCountries = async (name) => {
       // If name is NOT given, bring all Countries from DB
       find = await Country.findAll();
       console.log(`findCountries was executed successfully.`);
+      console.log(find.length);
       return find;
     }
   } catch (e) {

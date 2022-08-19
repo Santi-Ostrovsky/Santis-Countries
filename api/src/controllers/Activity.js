@@ -56,9 +56,8 @@ const deleteActivity = async (id) => {
     const activity = await Activity.destroy({ where: { id } });
     // Destroy returns an integer (amount of rows destroyed)
     if (activity > 0) {
-      const msg = `Activity deleted successfully:\n${activity}`;
+      const msg = `Activity deleted successfully: ${activity}`;
       console.log(msg);
-      return msg;
     }
     const msg = `Activity does not exist`;
     console.log(msg);
