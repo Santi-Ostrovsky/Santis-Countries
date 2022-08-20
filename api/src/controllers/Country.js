@@ -50,7 +50,7 @@ const findCountries = async (name) => {
         { include: [Activity] }
       );
       const arr = [find];
-      console.log(`findCountries(name) was executed successfully.`);
+      console.log(`findCountries?name was executed successfully.`);
       return arr;
     } else {
       // If name is NOT given, bring all Countries from DB

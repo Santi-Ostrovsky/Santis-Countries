@@ -10,7 +10,6 @@ const getActivities = async () => {
     );
     //
     console.log(`getActivities was executed successfully`);
-    console.log(find);
     return find;
   } catch (e) {
     // Error msg in case data call failed
@@ -22,10 +21,10 @@ const getActivities = async () => {
 const addActivity = async (content) => {
   try {
     const { name, difficulty, duration, season, countries } = content;
-    if (!name || !difficulty || !duration || !season || !countries) {
-      console.error("Missing Info");
-      return;
-    }
+    // if (!name || !difficulty || !duration || !season || !countries) {
+    //   console.error("Missing Info");
+    //   return;
+    // }
     // Create new activity
     const newActivity = await Activity.create({
       name,
@@ -71,12 +70,8 @@ const deleteActivity = async (id) => {
     const activity = await Activity.destroy({ where: { id } });
     // Destroy returns an integer (amount of rows destroyed)
     if (activity > 0) {
-      const msg = `Activity deleted successfully: ${activity}`;
-      console.log(msg);
-    }
-    const msg = `Activity does not exist`;
-    console.log(msg);
-    return activity;
+      console.log(`Activity (id: ${id}) deleted successfully`);
+    } else console.error(`Activity does not exist`);
   } catch (e) {
     // Error msg in case row delete failed
     console.error(`Error @ controllers/deleteActivity --> ${e}`);

@@ -111,6 +111,7 @@ router.delete("/activities/:id", async (req, res) => {
   try {
     const { id } = req.params;
     await deleteActivity(id);
+    res.send(`Activity deleted successfully`);
   } catch (e) {
     res.status(400).send(`Error --> ${e}`); // Bad request
   }
