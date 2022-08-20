@@ -1,3 +1,12 @@
 body {
-  background-color: #666;
+  background-image: url(../assets/img/Landing/dariusz-sankowski-3OiYMgDKJ6k-unsplash.jpg);
+}
+
+button {
+  content: center;
+  color: #222;
+  background-color: #6666;
+  border: none;
+  border-radius: 20px;
+  padding: 20px;
 }
