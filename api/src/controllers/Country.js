@@ -2,13 +2,12 @@ const axios = require("axios");
 const { Country, Activity } = require("../db");
 // const { Op } = require("sequelize");
 
-// Save API request into a reusable variable
-
 // getCountries (Save all API data into the DB)
 const getCountries = async () => {
   try {
     let api = (await axios.get(`https://restcountries.com/v3/all`)).data;
     // console.log(api);
+    // map api properties to create countries table rows
     api = await api?.map((c) =>
       Country.findOrCreate({
         where: {
