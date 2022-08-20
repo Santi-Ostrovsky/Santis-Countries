@@ -89,7 +89,7 @@ router.post("/activities", async (req, res) => {
   try {
     // const { name, difficulty, duration, season } = req.body;
     const newActivity = await addActivity(req.body);
-    res.send(newActivity);
+    res.status(201).send(newActivity);
   } catch (e) {
     res.status(400).send(`Error --> ${e}`); // Bad request
   }
