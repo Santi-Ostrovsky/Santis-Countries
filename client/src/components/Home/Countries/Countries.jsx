@@ -4,6 +4,7 @@ import PagingCountries from "./PagingCountries";
 export default function Countries() {
   return (
     <div>
+      Countries
       <PagingCountries />
     </div>
   );

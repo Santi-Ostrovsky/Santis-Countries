@@ -1,6 +1,6 @@
 import React from "react";
-// import Nav from "./Nav/Nav";
-// import Countries from "./Countries/Countries";
+import NavBar from "./Nav/NavBar";
+import Countries from "./Countries/Countries";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { showCountries } from "../../redux/actions";
@@ -19,8 +19,8 @@ export default function Home() {
       {/* <Link to="/">
         <button>BACK</button>
       </Link> */}
-      {/* <Nav /> */}
-      {/* <Countries /> */}
+      <NavBar />
+      <Countries />
     </div>
   );
 }

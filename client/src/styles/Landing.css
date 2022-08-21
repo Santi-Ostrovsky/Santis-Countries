@@ -1,6 +1,11 @@
-body {
+.container {
   background-image: url(../assets/img/Landing/dariusz-sankowski-3OiYMgDKJ6k-unsplash.jpg);
   background-size: 100%;
+  object-fit: cover;
+  z-index: 0;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
 }
 
 button {
