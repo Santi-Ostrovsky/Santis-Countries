@@ -6,7 +6,7 @@ module.exports = (sequelize) => {
 
   // Required properties
   sequelize.define(
-    "Activity",
+    "activity",
     {
       //   id: {
       //     type: DataTypes.UUID,

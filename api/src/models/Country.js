@@ -5,7 +5,7 @@ module.exports = (sequelize) => {
   // define country model
   //
   sequelize.define(
-    "Country",
+    "country",
     {
       // Required properties
       id: {

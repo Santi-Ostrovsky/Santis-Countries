@@ -1,17 +1,22 @@
-const { Country, Activity, Country_Activity } = require("../db");
+const { Country, Activity, country_activity } = require("../db");
 const { Op } = require("sequelize");
 
 // get activities
-const getActivities = async () => {
+const getActivities = async (id) => {
   try {
-    // Bring all activities from the DB (including countries)
-    const find = await Activity.findAll(
-      { order: ["id"] },
-      { include: [Country] }
-    );
-    //
-    console.log(`getActivities was executed successfully`);
-    return find;
+    let find;
+    // If ID is given, find only ONE Activity
+    if (id) {
+      find = await Activity.findByPk(id, { include: [Country] });
+      console.log(`getActivities/id was executed successfully.`);
+      return [find];
+    } else {
+      // If not, bring all activities from the DB (including countries)
+      find = await Activity.findAll({ order: ["id"] }, { include: [Country] });
+      //
+      console.log(`getActivities was executed successfully`);
+      return find;
+    }
   } catch (e) {
     // Error msg in case data call failed
     console.error(`Error @ controllers/getActivities --> ${e}`);
@@ -34,7 +39,10 @@ const addActivity = async (content) => {
     await newActivity.addCountry(countries);
 
     console.log(`Activity successfully added to database`);
-    return newActivity;
+    return await Activity.findByPk(newActivity.id, {
+      include: { model: Country, attributes: ["id"] },
+    });
+    // return newActivity;
   } catch (e) {
     // Error msg in case data insertion failed
     console.error(`Error @ controllers/addActivity --> ${e}`);
@@ -58,23 +66,15 @@ const updateActivity = async (id, content) => {
 
     // Add the activity to new countries
     await countries.map((c) =>
-      Country_Activity.findOrCreate({
-        where: {
-          CountryId: c,
-          ActivityId: id,
-        },
+      country_activity.findOrCreate({
+        where: { CountryId: c, ActivityId: id },
       })
     );
 
     // Remove activity from old countries
     await countries.map((c) =>
-      Country_Activity.destroy({
-        where: {
-          CountryId: {
-            [Op.not]: c,
-          },
-          ActivityId: id,
-        },
+      country_activity.destroy({
+        where: { CountryId: { [Op.not]: c }, ActivityId: id },
       })
     );
 

@@ -1,4 +1,5 @@
 const axios = require("axios");
+const { Op } = require("sequelize");
 const { Country, Activity } = require("../db");
 // const { Op } = require("sequelize");
 
@@ -14,10 +15,10 @@ const getCountries = async () => {
           // Required properties
           id: c.cca3,
           name: c.name.common,
-          flag: c.flags[1] ? c.flags[1] : "Not Found",
+          flag: c.flags[1] ? c.flags[1] : "Image not found",
           continent: c.continents[0],
-          capital: c.capital ? c.capital[0] : "Not Found",
-          subregion: c.subregion ? c.subregion : "Not Found",
+          capital: c.capital ? c.capital[0] : c.name.common,
+          subregion: c.subregion ? c.subregion : c.region,
           area: c.area,
           population: c.population,
 
@@ -26,7 +27,9 @@ const getCountries = async () => {
           region: c.region,
           unMember: c.unMember,
           // currencies: c.currencies[Object.keys(c.currencies)[0]].name,
-          maps: c.maps.googleMaps ? c.maps.googleMaps : "Not Found",
+          maps: c.maps.googleMaps
+            ? c.maps.googleMaps
+            : `https://www.google.com/maps/place/${c.name.common}`,
           timezones: c.timezones[0],
         },
       })
@@ -45,8 +48,8 @@ const findCountries = async (name) => {
     let find;
     // If name is given, find only ONE Country
     if (name) {
-      find = await Country.findOne(
-        { where: { name } },
+      find = await Country.findAll(
+        { where: { name: { [Op.iLike]: `%${name}%` } } },
         { include: [Activity] }
       );
       const arr = [find];
