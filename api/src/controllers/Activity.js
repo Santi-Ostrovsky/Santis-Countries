@@ -1,6 +1,8 @@
 const { Country, Activity, country_activity } = require("../db");
 const { Op } = require("sequelize");
 
+const ERROR = "Error @ controllers/";
+
 // get activities
 const getActivities = async (id) => {
   try {
@@ -19,7 +21,7 @@ const getActivities = async (id) => {
     }
   } catch (e) {
     // Error msg in case data call failed
-    console.error(`Error @ controllers/getActivities --> ${e}`);
+    console.error(`${ERROR}getActivities --> ${e}`);
   }
 };
 
@@ -45,7 +47,7 @@ const addActivity = async (content) => {
     // return newActivity;
   } catch (e) {
     // Error msg in case data insertion failed
-    console.error(`Error @ controllers/addActivity --> ${e}`);
+    console.error(`${ERROR}addActivity --> ${e}`);
   }
 };
 
@@ -80,7 +82,7 @@ const updateActivity = async (id, content) => {
 
     return activity;
   } catch (e) {
-    console.error(`Error @ controllers/updateActivity --> ${e}`);
+    console.error(`${ERROR}updateActivity --> ${e}`);
   }
 };
 
@@ -95,7 +97,7 @@ const deleteActivity = async (id) => {
     } else console.error(`Activity does not exist`);
   } catch (e) {
     // Error msg in case row delete failed
-    console.error(`Error @ controllers/deleteActivity --> ${e}`);
+    console.error(`${ERROR}deleteActivity --> ${e}`);
   }
 };
 

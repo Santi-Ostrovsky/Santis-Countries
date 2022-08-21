@@ -3,10 +3,13 @@ const { Op } = require("sequelize");
 const { Country, Activity } = require("../db");
 // const { Op } = require("sequelize");
 
+const PATH = "https://restcountries.com/v3/";
+const ERROR = "Error @ controllers/";
+
 // getCountries (Save all API data into the DB)
 const getCountries = async () => {
   try {
-    let api = (await axios.get(`https://restcountries.com/v3/all`)).data;
+    let api = (await axios.get(`${PATH}all`)).data;
     // console.log(api);
     // map api properties to create countries table rows
     api = await api?.map((c) =>
@@ -38,7 +41,7 @@ const getCountries = async () => {
     console.log(`Counties successfully added to database.`);
   } catch (e) {
     // Error msg in case the request failed
-    console.error(`Error @ controllers/getCountries --→ ${e}`);
+    console.error(`${ERROR}getCountries --→ ${e}`);
   }
 };
 
@@ -65,7 +68,7 @@ const findCountries = async (name) => {
     }
   } catch (e) {
     // Error msg in case data call failed
-    console.error(`Error @ controllers/findCountries --→ ${e}`);
+    console.error(`${ERROR}findCountries --→ ${e}`);
   }
 };
 
@@ -78,7 +81,7 @@ const getCountryById = async (id) => {
     return await Country.findByPk(id, { include: [Activity] });
   } catch (e) {
     // Error msg in casa data call failed
-    console.error(`Error @ controllers/getCountryById --→ ${e}`);
+    console.error(`${ERROR}getCountryById --→ ${e}`);
   }
 };
 
