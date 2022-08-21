@@ -50,6 +50,7 @@ const findCountries = async (name) => {
     if (name) {
       find = await Country.findAll(
         { where: { name: { [Op.iLike]: `%${name}%` } } },
+        { order: "name" },
         { include: [Activity] }
       );
       const arr = [find];
@@ -57,7 +58,7 @@ const findCountries = async (name) => {
       return arr;
     } else {
       // If name is NOT given, bring all Countries from DB
-      find = await Country.findAll();
+      find = await Country.findAll({ order: "name" });
       console.log(`findCountries was executed successfully.`);
       console.log(find.length);
       return find;
