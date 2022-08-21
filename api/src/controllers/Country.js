@@ -56,14 +56,14 @@ const findCountries = async (name) => {
         { order: "name" },
         { include: [Activity] }
       );
-      const arr = [find];
+      //   const arr = [find];
       console.log(`findCountries?name was executed successfully.`);
-      return arr;
+      return find;
     } else {
       // If name is NOT given, bring all Countries from DB
-      find = await Country.findAll({ order: "name" });
+      find = await Country.findAll();
       console.log(`findCountries was executed successfully.`);
-      console.log(find.length);
+      //   console.log(find.length);
       return find;
     }
   } catch (e) {
