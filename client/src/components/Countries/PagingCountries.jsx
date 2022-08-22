@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function PagingCountries() {
-  return <div>PagingCountries</div>;
+  return <h1>PagingCountries</h1>;
 }

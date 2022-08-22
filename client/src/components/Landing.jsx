@@ -7,7 +7,7 @@ export default function Landing() {
     <div className="container">
       <div className="img">
         <h1 className="App">Santi's Countries</h1>
-        <Link to="/home">
+        <Link to="/countries">
           <button autoFocus>DISCOVER</button>
         </Link>
       </div>

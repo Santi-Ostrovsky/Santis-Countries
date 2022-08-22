@@ -37,6 +37,10 @@ module.exports = (sequelize) => {
         allowNull: false,
         unique: "uniqueActivity",
       },
+      // Extra Property
+      picture: {
+        type: DataTypes.STRING,
+      },
     },
     //
     // Modify default timestamp titles
