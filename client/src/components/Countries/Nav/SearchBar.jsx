@@ -12,7 +12,6 @@ export default function SearchBar() {
     e.preventDefault();
     setSearch(e.target.value);
     dispatch(getCountryName(e.target.value));
-    console.log(e.target.value);
   };
 
   return (

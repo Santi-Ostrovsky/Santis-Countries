@@ -13,7 +13,6 @@ export default function Details() {
   useEffect(() => {
     dispatch(getCountryDetails(id));
   }, [dispatch, id]);
-  console.log(details);
   const {
     name,
     flag,
@@ -42,12 +41,14 @@ export default function Details() {
         <h5>Region: {region}</h5>
         <h5>Subregion: {subregion}</h5>
         <h5>Population: {population}</h5>
-        <h5>Area: {area}</h5>
+        <h5>
+          Area: {area} km<sup>2</sup>
+        </h5>
         <h5>Is a UN Member: {unMember ? "✔" : "❌"}</h5>
         <a
           href={maps}
-          allowFullScreen=""
-          loading="lazy"
+          //   allowFullScreen=""
+          //   loading="lazy"
           rel="noreferrer"
           target="_blank"
           referencepolicy="no-referrer-when-downgrade"
