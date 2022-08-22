@@ -8,8 +8,9 @@ import CountryCard from "./CountryCard";
 import { Link } from "react-router-dom";
 
 export default function Countries() {
-  let countries = useSelector((state) => state.countries);
+  const countries = useSelector((state) => state.countries);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(showCountries());
   }, [dispatch]);

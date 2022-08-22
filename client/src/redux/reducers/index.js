@@ -1,6 +1,7 @@
 const initialState = {
   countries: [],
   activities: [],
+  details: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -15,6 +16,11 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         activities: payload,
+      };
+    case "GET_DETAILS":
+      return {
+        ...state,
+        details: payload,
       };
     default:
       return { ...state };

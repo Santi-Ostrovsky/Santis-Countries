@@ -32,3 +32,20 @@ export const showActivities = () => {
     }
   };
 };
+
+// GET COUNTRY DETAILS
+export const getCountryDetails = (id) => {
+  return async function (dispatch) {
+    try {
+      const details = await axios.get(`${PATH}countries/${id}`);
+      return dispatch({
+        type: "GET_DETAILS",
+        payload: details.data,
+      });
+    } catch (e) {
+      console.error(`${ERROR}getCountryDetails --> ${e}`);
+    }
+  };
+};
+
+// CLEAR FILTERS
