@@ -53,7 +53,6 @@ const findCountries = async (name) => {
     if (name) {
       find = await Country.findAll(
         { where: { name: { [Op.iLike]: `%${name}%` } } },
-        { order: "name" },
         { include: [Activity] }
       );
       //   const arr = [find];

@@ -31,11 +31,6 @@ router.get("/countries", async (req, res) => {
   try {
     let { name } = req.query;
     if (name) name = name.trim();
-    //   name = name
-    //     .trim()
-    //     .split(" ")
-    //     .map((e) => e[0].toUpperCase() + e.slice(1).toLowerCase())
-    //     .join(" ");
 
     // verify if DB is empty
     const count = await Country.count();
