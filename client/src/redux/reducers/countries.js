@@ -1,4 +1,8 @@
-import { GET_COUNTRIES, GET_DETAILS } from "../actions/actionTypes";
+import {
+  GET_COUNTRIES,
+  GET_DETAILS,
+  GET_COUNTRY_BY_NAME,
+} from "../actions/actionTypes";
 
 const initialState = {
   countries: [],
@@ -21,6 +25,11 @@ export default function countries(state = initialState, action) {
       return {
         ...state,
         details: payload,
+      };
+    case GET_COUNTRY_BY_NAME:
+      return {
+        ...state,
+        countries: payload,
       };
     default:
       return { ...state };

@@ -1,5 +1,5 @@
 import React from "react";
-import FilterCountries from "./FilterCountries";
+import FiltersCountries from "./FiltersCountries";
 import SearchBar from "./SearchBar";
 
 export default function Bar() {
@@ -7,7 +7,7 @@ export default function Bar() {
     <>
       <h2>Bar</h2>
       <SearchBar />
-      <FilterCountries />
+      <FiltersCountries />
     </>
   );
 }
