@@ -35,6 +35,7 @@ const addActivity = async (content) => {
       difficulty,
       duration,
       season,
+      picture,
       countries,
     });
     //   Link activity to its countries
