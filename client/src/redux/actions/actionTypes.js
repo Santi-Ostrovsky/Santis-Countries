@@ -1,0 +1,6 @@
+// COUNTRIES
+export const GET_COUNTRIES = "GET_COUNTRIES";
+export const GET_DETAILS = "GET_DETAILS";
+
+// ACTIVITIES
+export const GET_ACTIVITIES = "GET_ACTIVITIES";

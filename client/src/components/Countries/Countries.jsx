@@ -3,7 +3,7 @@ import SiteNav from "../SiteNav";
 import PagingCountries from "./PagingCountries";
 import Bar from "./Nav/Bar";
 import { useSelector, useDispatch } from "react-redux";
-import { showCountries } from "../../redux/actions";
+import { showCountries } from "../../redux/actions/countries";
 import CountryCard from "./CountryCard";
 import { Link } from "react-router-dom";
 
@@ -22,8 +22,8 @@ export default function Countries() {
       <SiteNav />
       <Bar />
 
-      {countries &&
-        countries.map((c) => {
+      {countries.countries &&
+        countries.countries.map((c) => {
           return (
             <div key={c.id}>
               <Link to={`/countries/${c.id}`}>

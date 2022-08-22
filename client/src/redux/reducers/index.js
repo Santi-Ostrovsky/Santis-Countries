@@ -1,28 +1,7 @@
-const initialState = {
-  countries: [],
-  activities: [],
-  details: [],
-};
+import countries from "./countries";
+import activities from "./activities";
+import { combineReducers } from "redux";
 
-export default function rootReducer(state = initialState, action) {
-  const { type, payload } = action;
-  switch (type) {
-    case "GET_COUNTRIES":
-      return {
-        ...state,
-        countries: payload,
-      };
-    case "GET_ACTIVITIES":
-      return {
-        ...state,
-        activities: payload,
-      };
-    case "GET_DETAILS":
-      return {
-        ...state,
-        details: payload,
-      };
-    default:
-      return { ...state };
-  }
-}
+const rootReducer = combineReducers({ countries, activities });
+
+export default rootReducer;

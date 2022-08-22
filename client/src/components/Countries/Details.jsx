@@ -3,11 +3,10 @@ import SiteNav from "../SiteNav";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getCountryDetails } from "../../redux/actions";
-import Countries from "./Countries";
+import { getCountryDetails } from "../../redux/actions/countries";
 
 export default function Details() {
-  const details = useSelector((state) => state.details);
+  const details = useSelector((state) => state.countries.details);
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -45,8 +44,16 @@ export default function Details() {
         <h5>Population: {population}</h5>
         <h5>Area: {area}</h5>
         <h5>Is a UN Member: {unMember ? "✔" : "❌"}</h5>
-        {/* <iframe title={name} src={maps} allowFullScreen="" loading="lazy"
-        referencepolicy="no-referrer-when-downgrade" /> */}
+        <a
+          href={maps}
+          allowFullScreen=""
+          loading="lazy"
+          rel="noreferrer"
+          target="_blank"
+          referencepolicy="no-referrer-when-downgrade"
+        >
+          MAP
+        </a>
         <h5>Timezone: {timezones}</h5>
         <h4>Activities</h4>
         {activities?.map((a) => {
