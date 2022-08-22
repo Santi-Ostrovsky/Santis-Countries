@@ -66,19 +66,19 @@ const updateActivity = async (id, content) => {
     // save changes on row and return updated activity
     await activity.save();
 
-    // Add the activity to new countries
-    await countries.map((c) =>
-      country_activity.findOrCreate({
-        where: { CountryId: c, ActivityId: id },
-      })
-    );
+    // Add the activity to new countries -- ARREGLAR!!!
+    // await countries.map((c) =>
+    //   country_activity.findOrCreate({
+    //     where: { CountryId: c, ActivityId: id },
+    //   })
+    // );
 
-    // Remove activity from old countries
-    await countries.map((c) =>
-      country_activity.destroy({
-        where: { CountryId: { [Op.not]: c }, ActivityId: id },
-      })
-    );
+    // Remove activity from old countries -- ARREGLAR!!!
+    // await countries.map((c) =>
+    //   country_activity.destroy({
+    //     where: { CountryId: { [Op.not]: c }, ActivityId: id },
+    //   })
+    // );
 
     return activity;
   } catch (e) {
