@@ -40,7 +40,7 @@ router.get("/countries", async (req, res) => {
     const find = await findCountries(name);
     find.length
       ? res.json(find)
-      : res.status(400).send("Error @ routes/index/countries");
+      : res.status(404).send("Error @ routes/index/countries");
     // res.send(await findCountries());
   } catch (e) {
     // console.error(e.message);
