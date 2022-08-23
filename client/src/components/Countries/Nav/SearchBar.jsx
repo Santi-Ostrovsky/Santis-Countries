@@ -15,7 +15,7 @@ export default function SearchBar() {
   };
 
   return (
-    <>
+    <div>
       <form onSubmit={(e) => e.preventDefault()}>
         <input
           type="search"
@@ -25,6 +25,6 @@ export default function SearchBar() {
           value={search}
         ></input>
       </form>
-    </>
+    </div>
   );
 }
