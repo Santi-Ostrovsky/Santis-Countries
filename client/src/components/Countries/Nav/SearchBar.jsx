@@ -12,19 +12,20 @@ export default function SearchBar() {
     e.preventDefault();
     setSearch(e.target.value);
     dispatch(getCountryName(e.target.value));
+    console.log(e.target.value);
   };
 
   return (
     <div>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <input
-          type="search"
-          name="country"
-          placeholder="Search"
-          onChange={(e) => handleChange(e)}
-          value={search}
-        ></input>
-      </form>
+      {/* <form onSubmit={(e) => e.preventDefault()}> */}
+      <input
+        type="search"
+        name="country"
+        placeholder="Search"
+        onChange={(e) => handleChange(e)}
+        value={search}
+      ></input>
+      {/* </form> */}
     </div>
   );
 }

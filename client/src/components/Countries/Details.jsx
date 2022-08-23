@@ -30,25 +30,29 @@ export default function Details() {
   } = details;
 
   return (
-    <>
+    <div>
       <SiteNav />
       <div key={id}>
         <img src={flag} alt={`${name}'s flag`} />
-        <h2>{name}</h2>
-        <h3>Official Name: {officialName}</h3>
-        <h4>Capital: {capital}</h4>
-        <h4>Continent: {continent}</h4>
-        <h5>Region: {region}</h5>
-        <h5>Subregion: {subregion}</h5>
-        <h5>Population: {population}</h5>
-        <h5>
-          Area: {area} km<sup>2</sup>
-        </h5>
+        <h1>{name}</h1>
+        <h2>{officialName}</h2>
+        <h4>Capital</h4>
+        <span>{capital}</span>
+        <h4>Continent</h4>
+        <span>{continent}</span>
+        <h5>Region</h5>
+        <span>{region}</span>
+        <h5>Subregion</h5>
+        <span>{subregion}</span>
+        <h5>Population</h5>
+        <span>{population}</span>
+        <h5>Area</h5>
+        <span>
+          {area} km<sup>2</sup>
+        </span>
         <h5>Is a UN Member: {unMember ? "✔" : "❌"}</h5>
         <a
           href={maps}
-          //   allowFullScreen=""
-          //   loading="lazy"
           rel="noreferrer"
           target="_blank"
           referencepolicy="no-referrer-when-downgrade"
@@ -68,6 +72,6 @@ export default function Details() {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }

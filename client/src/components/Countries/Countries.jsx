@@ -8,13 +8,17 @@ import CountryCard from "./CountryCard";
 import { Link } from "react-router-dom";
 
 export default function Countries() {
-  const countries = useSelector((state) => state.countries);
+  const allCountries = useSelector((state) => state.countries.countries);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(showCountries());
   }, [dispatch]);
-  //   console.log(countries);
+
+  let currentPage = useSelector((state) => state.countries.page);
+  const lastIndex = 10 * currentPage;
+  const firstIndex = lastIndex - 10;
+  const countriesInPage = allCountries.slice(firstIndex, lastIndex);
 
   return (
     <div>
@@ -22,22 +26,21 @@ export default function Countries() {
       <SiteNav />
       <Bar />
 
-      {countries.countries &&
-        countries.countries.map((c) => {
-          return (
-            <div key={c.id}>
-              <Link to={`/countries/${c.id}`}>
-                <CountryCard
-                  name={c.name}
-                  flag={c.flag}
-                  continent={c.continent}
-                />
-              </Link>
-            </div>
-          );
-        })}
+      {countriesInPage?.map((c) => {
+        return (
+          <div key={c.id}>
+            <Link to={`/countries/${c.id}`}>
+              <CountryCard
+                name={c.name}
+                flag={c.flag}
+                continent={c.continent}
+              />
+            </Link>
+          </div>
+        );
+      })}
 
-      <PagingCountries />
+      <PagingCountries allCountries={allCountries.length} />
     </div>
   );
 }

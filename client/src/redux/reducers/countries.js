@@ -2,11 +2,13 @@ import {
   GET_COUNTRIES,
   GET_DETAILS,
   GET_COUNTRY_BY_NAME,
+  SET_CURRENT_PAGE,
 } from "../actions/actionTypes";
 
 const initialState = {
   countries: [],
   details: [],
+  page: 1,
   //   filteredCountries: [],
   //   countryById: {},
   //   activePage: { page: 1, btn: null },
@@ -30,6 +32,11 @@ export default function countries(state = initialState, action) {
       return {
         ...state,
         countries: payload,
+      };
+    case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        page: payload,
       };
     default:
       return { ...state };

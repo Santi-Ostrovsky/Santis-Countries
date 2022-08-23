@@ -1,5 +1,10 @@
 import axios from "axios";
-import { GET_COUNTRIES, GET_DETAILS, GET_COUNTRY_BY_NAME } from "./actionTypes";
+import {
+  GET_COUNTRIES,
+  GET_DETAILS,
+  GET_COUNTRY_BY_NAME,
+  SET_CURRENT_PAGE,
+} from "./actionTypes";
 
 const PATH = "http://localhost:3001/countries/";
 const ERROR = `Error @ actions/`;
@@ -48,3 +53,11 @@ export const getCountryName = (name) => {
 };
 
 // CLEAR FILTERS
+
+// PAGING
+export const paging = (payload) => {
+  return {
+    type: SET_CURRENT_PAGE,
+    payload,
+  };
+};

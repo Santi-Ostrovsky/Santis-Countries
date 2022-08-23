@@ -19,3 +19,5 @@ export default function Activities() {
     </>
   );
 }
+
+// PROMPT (SEGURO DESEA ELIMINAR LA ACTIVIDAD? REACT/TEORIA/16_ROUTING:405)
