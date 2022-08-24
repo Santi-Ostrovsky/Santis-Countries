@@ -1,5 +1,20 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { orderByPopulation } from "../../../redux/actions/countries";
 
 export default function OrderByPopulation() {
-  return <div>OrderByPopulation</div>;
+  const dispatch = useDispatch();
+
+  return (
+    <div>
+      <label>
+        Order By Population
+        <select onChange={(e) => dispatch(orderByPopulation(e.target.value))}>
+          <option value="All">All</option>
+          <option value="HIGHER">Higher</option>
+          <option value="LOWER">Lower</option>
+        </select>
+      </label>
+    </div>
+  );
 }

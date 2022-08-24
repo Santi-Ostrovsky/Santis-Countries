@@ -5,6 +5,8 @@ import {
   GET_COUNTRY_BY_NAME,
   FILTER_BY_CONTINENT,
   FILTER_BY_ACTIVITY,
+  ORDER_ALPHABETICALLY,
+  ORDER_BY_POPULATION,
   SET_CURRENT_PAGE,
 } from "./actionTypes";
 
@@ -66,6 +68,22 @@ export const filterCountries = (payload) => {
 export const filterByActivity = (payload) => {
   return {
     type: FILTER_BY_ACTIVITY,
+    payload,
+  };
+};
+
+// ORDER ALPHABETICALLY
+export const orderAlphabetically = (payload) => {
+  return {
+    type: ORDER_ALPHABETICALLY,
+    payload,
+  };
+};
+
+// ORDER BY POPULATION
+export const orderByPopulation = (payload) => {
+  return {
+    type: ORDER_BY_POPULATION,
     payload,
   };
 };

@@ -13,6 +13,7 @@ export default function Bar() {
       <FilterByActivity />
       <OrderByAZ />
       <OrderByPopulation />
+      <button>CLEAR FILTERS</button>
     </>
   );
 }

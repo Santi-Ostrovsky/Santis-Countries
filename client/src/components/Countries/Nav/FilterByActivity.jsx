@@ -11,16 +11,19 @@ export default function FilterByActivity() {
     dispatch(showActivities());
   }, [dispatch]);
 
+  activities = new Set(activities?.map((a) => a.name));
+  activities = Array.from(activities);
+
   return (
     <div>
       <label>
         Filter By Activity
         <select onChange={(e) => dispatch(filterByActivity(e.target.value))}>
           <option value="All">All</option>
-          {activities?.map((a) => {
+          {activities?.map((a, i) => {
             return (
-              <option key={a.id} value={a.name}>
-                {a.name}
+              <option key={i} value={a}>
+                {a}
               </option>
             );
           })}
