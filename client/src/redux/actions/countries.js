@@ -5,6 +5,7 @@ import {
   GET_COUNTRY_BY_NAME,
   FILTER_BY_CONTINENT,
   FILTER_BY_ACTIVITY,
+  FILTER,
   ORDER_ALPHABETICALLY,
   ORDER_BY_POPULATION,
   SET_CURRENT_PAGE,
@@ -56,18 +57,26 @@ export const getCountryName = (name) => {
   };
 };
 
-// FILTER BY CONTINENT
-export const filterCountries = (payload) => {
-  return {
-    type: FILTER_BY_CONTINENT,
-    payload,
-  };
-};
+// // FILTER BY CONTINENT
+// export const filterCountries = (payload) => {
+//   return {
+//     type: FILTER_BY_CONTINENT,
+//     payload,
+//   };
+// };
 
-// FILTER BY ACTIVITY
-export const filterByActivity = (payload) => {
+// // FILTER BY ACTIVITY
+// export const filterByActivity = (payload) => {
+//   return {
+//     type: FILTER_BY_ACTIVITY,
+//     payload,
+//   };
+// };
+
+// GENERAL FILTER
+export const filter = (payload) => {
   return {
-    type: FILTER_BY_ACTIVITY,
+    type: FILTER,
     payload,
   };
 };

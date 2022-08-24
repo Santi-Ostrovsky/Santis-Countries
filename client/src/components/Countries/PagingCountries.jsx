@@ -4,7 +4,7 @@ import { paging } from "../../redux/actions/countries";
 
 export default function PagingCountries({ allCountries }) {
   const dispatch = useDispatch();
-  const page = useSelector((state) => state.countries.page);
+  //   const page = useSelector((state) => state.countries.page);
 
   const pageNumber = Array(Math.ceil(allCountries / 10))
     .fill(0)
