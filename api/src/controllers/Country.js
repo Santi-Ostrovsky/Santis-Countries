@@ -60,7 +60,15 @@ const findCountries = async (name) => {
       return find;
     } else {
       // If name is NOT given, bring all Countries from DB
-      find = await Country.findAll();
+      find = await Country.findAll({
+        include: {
+          model: Activity,
+          attributes: ["name"],
+          through: {
+            attributes: [],
+          },
+        },
+      });
       console.log(`findCountries was executed successfully.`);
       //   console.log(find.length);
       return find;

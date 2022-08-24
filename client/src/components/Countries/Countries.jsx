@@ -15,16 +15,18 @@ export default function Countries() {
     dispatch(showCountries());
   }, [dispatch]);
 
-  let currentPage = useSelector((state) => state.countries.page);
+  // Paging props
+  const currentPage = useSelector((state) => state.countries.page);
   const lastIndex = 10 * currentPage;
   const firstIndex = lastIndex - 10;
-  const countriesInPage = allCountries.slice(firstIndex, lastIndex);
+  const countriesInPage = allCountries?.slice(firstIndex, lastIndex);
 
   return (
     <div>
       <h1>Countries</h1>
       <SiteNav />
       <Bar />
+      <PagingCountries allCountries={allCountries?.length} />
 
       {countriesInPage?.map((c) => {
         return (
@@ -39,8 +41,6 @@ export default function Countries() {
           </div>
         );
       })}
-
-      <PagingCountries allCountries={allCountries.length} />
     </div>
   );
 }

@@ -12,10 +12,10 @@ export default function Activities() {
     <>
       <h1>Activities </h1>
       <SiteNav />
+      <PagingActivities />
       <Link to="/activities/create">
         <button>Create Activity</button>
       </Link>
-      <PagingActivities />
     </>
   );
 }

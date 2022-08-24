@@ -3,6 +3,8 @@ import {
   GET_COUNTRIES,
   GET_DETAILS,
   GET_COUNTRY_BY_NAME,
+  FILTER_BY_CONTINENT,
+  FILTER_BY_ACTIVITY,
   SET_CURRENT_PAGE,
 } from "./actionTypes";
 
@@ -49,6 +51,22 @@ export const getCountryName = (name) => {
         payload: countryName.data,
       });
     } catch (e) {}
+  };
+};
+
+// FILTER BY CONTINENT
+export const filterCountries = (payload) => {
+  return {
+    type: FILTER_BY_CONTINENT,
+    payload,
+  };
+};
+
+// FILTER BY ACTIVITY
+export const filterByActivity = (payload) => {
+  return {
+    type: FILTER_BY_ACTIVITY,
+    payload,
   };
 };
 
