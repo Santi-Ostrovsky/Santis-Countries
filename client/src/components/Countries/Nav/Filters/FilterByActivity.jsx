@@ -1,24 +1,29 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { filterByActivity } from "../../../redux/actions/countries";
-import { showActivities } from "../../../redux/actions/activities";
+import { paging } from "../../../../redux/actions/countries";
 
-export default function FilterByActivity() {
+export default function FilterByActivity({ setFilterCountries }) {
   const dispatch = useDispatch();
   let activities = useSelector((state) => state.activities.activities);
 
-  useEffect(() => {
-    dispatch(showActivities());
-  }, [dispatch]);
-
   activities = new Set(activities?.map((a) => a.name));
   activities = Array.from(activities);
+
+  const handleChange = (e) => {
+    setFilterCountries((state) => {
+      return {
+        ...state,
+        byActivities: e.target.value,
+      };
+    });
+    dispatch(paging(1));
+  };
 
   return (
     <div>
       <label>
         Filter By Activity
-        <select onChange={(e) => dispatch(filterByActivity(e.target.value))}>
+        <select onChange={(e) => handleChange(e)}>
           <option value="All">All</option>
           {activities?.map((a, i) => {
             return (

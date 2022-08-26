@@ -4,6 +4,7 @@ import PagingCountries from "./PagingCountries";
 import Bar from "./Nav/Bar";
 import { useSelector, useDispatch } from "react-redux";
 import { showCountries } from "../../redux/actions/countries";
+import { showActivities } from "../../redux/actions/activities";
 import CountryCard from "./CountryCard";
 import { Link } from "react-router-dom";
 
@@ -13,6 +14,7 @@ export default function Countries() {
 
   useEffect(() => {
     dispatch(showCountries());
+    dispatch(showActivities());
   }, [dispatch]);
 
   // Paging props

@@ -17,14 +17,21 @@ export default function ActivityDetails() {
     dispatch(getActivityDetails(id));
   }, [dispatch, id]);
 
-  //   const { name, difficulty, duration, season, countries } = details;
+  const { img, name, difficulty, duration, season, countries } = details;
 
   return (
     <div>
       <h1>{details.name}</h1>
       {/* <SiteNav />
       <div key={id}> */}
-      {/* <img src={img} alt={`${name}'s flag`} /> */}
+      {/* <img
+        src={
+          img
+            ? img
+            : `https://i0.wp.com/elfutbolito.mx/wp-content/uploads/2019/04/image-not-found.png?ssl=1`
+        }
+        alt={`${name}'s flag`}
+      /> */}
       {/* <h2>{name}</h2>
         <h4>Difficulty</h4>
         <span>{difficulty}</span>

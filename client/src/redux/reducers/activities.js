@@ -9,9 +9,6 @@ const initialState = {
   activities: [],
   allCountries: [...countries.allCountries],
   details: [],
-  //   activities: { all: [], loaded: false },
-  //   newActivity: { created: false, info: "", error: "" },
-  //   newActivityLoading: false,
 };
 
 export default function activities(state = initialState, action) {
