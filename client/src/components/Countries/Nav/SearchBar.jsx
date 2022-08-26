@@ -9,11 +9,12 @@ export default function SearchBar() {
   let [search, setSearch] = useState("");
 
   const handleChange = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     setSearch(e.target.value);
     dispatch(getCountryName(e.target.value));
-    console.log(e.target.value);
   };
+
+  // SET PAGE 1
 
   return (
     <div>

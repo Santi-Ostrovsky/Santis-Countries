@@ -23,7 +23,6 @@ export default function Countries() {
 
   return (
     <div>
-      <h1>Countries</h1>
       <SiteNav />
       <Bar />
       <PagingCountries allCountries={allCountries?.length} />

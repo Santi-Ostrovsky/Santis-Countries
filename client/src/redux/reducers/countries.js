@@ -2,8 +2,9 @@ import {
   GET_COUNTRIES,
   GET_DETAILS,
   GET_COUNTRY_BY_NAME,
-  FILTER_BY_CONTINENT,
-  FILTER_BY_ACTIVITY,
+  //   FILTER_BY_CONTINENT,
+  //   FILTER_BY_ACTIVITY,
+  FILTER,
   ORDER_ALPHABETICALLY,
   ORDER_BY_POPULATION,
   SET_CURRENT_PAGE,
@@ -43,43 +44,71 @@ export default function countries(state = initialState, action) {
         countries: payload,
       };
     //
-    case FILTER_BY_CONTINENT:
-      const allCountries = [...state.allCountries];
-      const filteredCountries =
-        payload === "All"
-          ? allCountries
-          : allCountries.filter((c) => c.continent === payload);
-      return {
-        ...state,
-        countries: state.allCountries.filter((c) =>
-          filteredCountries.includes(c)
-        ),
-      };
-    //
-    case FILTER_BY_ACTIVITY:
-      const allCountries2 = [...state.allCountries];
+    // case FILTER_BY_CONTINENT:
+    //   const allCountries = [...state.allCountries];
+    //   const filteredCountries =
+    //     payload === "All"
+    //       ? allCountries
+    //       : allCountries.filter((c) => c.continent === payload);
+    //   return {
+    //     ...state,
+    //     countries: state.allCountries.filter((c) =>
+    //       filteredCountries.includes(c)
+    //     ),
+    //   };
+    // //
+    // case FILTER_BY_ACTIVITY:
+    //   const allCountries2 = [...state.allCountries];
 
-      let activityCountries = allCountries2
-        .filter((c) => c.activities.length)
-        .filter((c) =>
-          c.activities.map((e) => Object.values(e)[0]).includes(payload)
+    //   let activityCountries = allCountries2
+    //     .filter((c) => c.activities.length)
+    //     .filter((c) =>
+    //       c.activities.map((e) => Object.values(e)[0]).includes(payload)
+    //     );
+
+    //   const countriesByActivity =
+    //     payload === "All" ? allCountries2 : activityCountries;
+    //   return {
+    //     ...state,
+    //     countries: state.allCountries.filter((c) =>
+    //       countriesByActivity.includes(c)
+    //     ),
+    //   };
+    //
+    case FILTER:
+      const { byActivities, byContinents } = payload;
+      let allCountries2 = [...state.allCountries];
+      //   console.log(byContinents);
+      //   console.log(payload);
+      //   console.log(allCountries2);
+
+      if (byContinents && byContinents !== "All")
+        allCountries2 = allCountries2.filter(
+          (c) => c.continent === byContinents
         );
 
-      const countriesByActivity =
-        payload === "All" ? allCountries2 : activityCountries;
+      if (byActivities && byActivities !== "All")
+        allCountries2 = allCountries2.filter((c) => {
+          const activities2 = c.activities.filter((acc) => {
+            return acc.name === byActivities;
+          });
+          return activities2.length ? byActivities : false;
+        });
       return {
         ...state,
-        countries: state.allCountries.filter((c) =>
-          countriesByActivity.includes(c)
-        ),
+        countries: allCountries2,
       };
     //
     case ORDER_ALPHABETICALLY:
-      let orderedCountries_az = state.countries;
+      let orderedCountries_az;
       if (payload === "A → Z")
-        orderedCountries_az = state.countries.sort((a, b) => a.name - b.name);
+        orderedCountries_az = [
+          ...state.countries.sort((a, b) => a.name - b.name),
+        ];
       if (payload === "Z → A")
-        orderedCountries_az = state.countries.sort((a, b) => b.name - a.name);
+        orderedCountries_az = [
+          ...state.countries.sort((a, b) => b.name - a.name),
+        ];
       return {
         ...state,
         countries: orderedCountries_az,

@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  filterCountries,
-  filterByActivity,
+  //   filterCountries,
+  //   filterByActivity,
+  filter,
   paging,
 } from "../../../redux/actions/countries";
 import { showActivities } from "../../../redux/actions/activities";
 
 export default function Filter() {
   const dispatch = useDispatch();
-  let [filter, setFilter] = useState({
+  let [filterCountries, setFilterCountries] = useState({
     byContinents: [],
     byActivities: [],
   });
@@ -20,12 +21,13 @@ export default function Filter() {
   continents = Array.from(continents).sort();
 
   const handleContinents = (e) => {
-    setFilter((state) => {
+    setFilterCountries((state) => {
       return {
         ...state,
         byContinents: e.target.value,
       };
     });
+    dispatch(paging(1));
   };
 
   // Activities Filter
@@ -37,7 +39,7 @@ export default function Filter() {
   activities = Array.from(activities).sort();
 
   const handleActivities = (e) => {
-    setFilter((state) => {
+    setFilterCountries((state) => {
       return {
         ...state,
         byActivities: e.target.value,
@@ -45,6 +47,11 @@ export default function Filter() {
     });
     dispatch(paging(1));
   };
+
+  // ----------
+  useEffect(() => {
+    dispatch(filter(filterCountries));
+  }, [dispatch, filterCountries]);
 
   return (
     <div>
