@@ -47,14 +47,14 @@ const getActivityById = async (id) => {
 // Post --> addActivity
 const addActivity = async (content) => {
   try {
-    const { name, difficulty, duration, season, countries } = content;
+    const { name, difficulty, duration, season, picture, countries } = content;
     // Create new activity
     const newActivity = await Activity.create({
       name,
       difficulty,
       duration,
       season,
-      //   picture,
+      picture,
       countries,
     });
     //   Link activity to its countries
