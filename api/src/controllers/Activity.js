@@ -25,6 +25,25 @@ const getActivities = async (id) => {
   }
 };
 
+// GET --> Activity ID
+const getActivityById = async (id) => {
+  try {
+    // Attempt to retrieve a single result from DB through ID (including countries)
+    return await Activity.findByPk(id, {
+      include: {
+        model: Country,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+    });
+  } catch (e) {
+    // Error msg in casa data call failed
+    console.error(`${ERROR}getActivityById --→ ${e}`);
+  }
+};
+
 // Post --> addActivity
 const addActivity = async (content) => {
   try {
@@ -102,4 +121,10 @@ const deleteActivity = async (id) => {
   }
 };
 
-module.exports = { getActivities, addActivity, updateActivity, deleteActivity };
+module.exports = {
+  getActivities,
+  getActivityById,
+  addActivity,
+  updateActivity,
+  deleteActivity,
+};

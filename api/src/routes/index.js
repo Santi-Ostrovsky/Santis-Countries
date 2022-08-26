@@ -6,6 +6,7 @@ const {
 } = require("../controllers/Country");
 const {
   getActivities,
+  getActivityById,
   addActivity,
   updateActivity,
   deleteActivity,
@@ -77,6 +78,17 @@ router.get("/activities", async (req, res) => {
     // AGREGAR ID
     const find = await getActivities(id);
     find.length ? res.json(find) : res.send(`No activities were created yet!`);
+  } catch (e) {
+    res.status(404).send(`Error --> ${e}`); // Not found
+  }
+});
+
+// GET @ /ACTIVITIES /ID (PARAMS)
+router.get("/activities/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updatedActivity = await getActivities(id, req.body);
+    res.send(updatedActivity);
   } catch (e) {
     res.status(404).send(`Error --> ${e}`); // Not found
   }
