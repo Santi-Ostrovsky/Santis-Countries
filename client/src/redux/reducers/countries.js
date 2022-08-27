@@ -5,6 +5,7 @@ import {
   FILTER,
   ORDER_ALPHABETICALLY,
   ORDER_BY_POPULATION,
+  SET_CURRENT_PAGE,
 } from "../actions/actionTypes";
 
 export const initialState = {
@@ -112,6 +113,12 @@ export default function countries(state = initialState, action) {
         ...state,
         countries: currentCountries2,
         order: { ...state.order, orderByPopulation: payload },
+      };
+    //
+    case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        page: payload,
       };
     //
     default:

@@ -6,7 +6,7 @@ export default function FilterByActivity({ setFilterCountries }) {
   const dispatch = useDispatch();
   let activities = useSelector((state) => state.activities.activities);
 
-  activities = Array.from(new Set(activities?.map((a) => a.name)));
+  activities = Array.from(new Set(activities?.map((a) => a.name))).sort();
 
   const handleChange = (e) => {
     setFilterCountries((state) => {

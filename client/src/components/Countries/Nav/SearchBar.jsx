@@ -2,31 +2,38 @@ import React from "react";
 import { getCountryName } from "../../../redux/actions/countries";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import "../../../styles/Countries/Nav/SearchBar.css";
 
 export default function SearchBar() {
   const dispatch = useDispatch();
 
-  let [search, setSearch] = useState("");
+  let [state, setState] = useState({
+    search: "",
+    error: false,
+  });
 
   const handleChange = (e) => {
-    // e.preventDefault();
-    setSearch(e.target.value);
-    dispatch(getCountryName(e.target.value));
+    if (/^[a-z\s]*$/gi.test(e.target.value)) {
+      setState({ search: e.target.value, error: false });
+      dispatch(getCountryName(e.target.value));
+    } else setState({ ...state, error: true });
   };
-
-  // SET PAGE 1
 
   return (
     <div>
-      {/* <form onSubmit={(e) => e.preventDefault()}> */}
-      <input
-        type="search"
-        name="country"
-        placeholder="Search"
-        onChange={(e) => handleChange(e)}
-        value={search}
-      ></input>
-      {/* </form> */}
+      <label>
+        Search Countries by Name
+        <input
+          type="search"
+          name="country"
+          placeholder="ex: Argentina"
+          onChange={(e) => handleChange(e)}
+          value={state.search}
+        ></input>
+      </label>
+      <span className={state.error ? "error" : "noError"}>
+        Country name can only contain letters and white spaces
+      </span>
     </div>
   );
 }

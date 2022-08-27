@@ -6,8 +6,9 @@ export default function FilterByContinent({ setFilterCountries }) {
   const dispatch = useDispatch();
   let allCountries = useSelector((state) => state.countries.allCountries);
 
-  let continents = new Set(allCountries?.map((c) => c.continent));
-  continents = Array.from(continents);
+  const continents = Array.from(
+    new Set(allCountries?.map((c) => c.continent))
+  ).sort();
 
   const handleChange = (e) => {
     setFilterCountries((state) => {

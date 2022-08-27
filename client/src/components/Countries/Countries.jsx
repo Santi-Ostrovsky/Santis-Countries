@@ -33,7 +33,7 @@ export default function Countries() {
       {countriesInPage.length ? (
         countriesInPage.map((c) => {
           return (
-            <div key={c.id}>
+            <div key={c.name}>
               <Link to={`/countries/${c.id}`}>
                 <CountryCard
                   name={c.name}

@@ -34,7 +34,9 @@ export default function Details() {
       <SiteNav />
       <div key={id}>
         <img src={flag} alt={`${name}'s flag`} />
-        <h1>{name}</h1>
+        <h1>
+          {id} - {name}
+        </h1>
         <h2>{officialName}</h2>
         <h4>Capital</h4>
         <span>{capital}</span>

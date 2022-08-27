@@ -40,9 +40,11 @@ export const getActivityDetails = (id) => {
 
 // CREATE ACTIVITY
 export const createActivity = (activity) => {
+  console.log(activity);
   return async function (dispatch) {
     try {
       const newActivity = await axios.post(PATH, activity);
+      console.log(newActivity);
       return dispatch({
         type: CREATE_ACTIVITY,
         payload: newActivity,

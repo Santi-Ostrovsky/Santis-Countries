@@ -11,8 +11,6 @@ export default function Bar() {
     <div>
       <SearchBar />
       <Filter />
-      {/* <FilterByContinent />
-      <FilterByActivity /> */}
       <OrderByAZ />
       <OrderByPopulation />
       <button>CLEAR FILTERS</button>

@@ -9,7 +9,6 @@ import "../../styles/Activities/CreateForm.css";
 
 export default function CreateForm() {
   const allCountries = useSelector((state) => state.countries.allCountries);
-  console.log(allCountries);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -23,7 +22,7 @@ export default function CreateForm() {
     difficulty: 1,
     duration: 1,
     season: "",
-    picture: "",
+    // picture: "",
     countries: [],
   });
 
@@ -65,7 +64,7 @@ export default function CreateForm() {
       difficulty: 1,
       duration: 1,
       season: "",
-      picture: "",
+      //   picture: "",
       countries: [],
     });
   };
@@ -142,7 +141,7 @@ export default function CreateForm() {
             <option>Select Season</option>
             {["Summer", "Autumn", "Winter", "Spring"].map((s, i) => {
               return (
-                <option key={i} value={s}>
+                <option key={i} value={s.toLowerCase()}>
                   {s}
                 </option>
               );
@@ -150,9 +149,12 @@ export default function CreateForm() {
           </select>
         </label>
 
+        {/* <div>Season</div>
+        <label for='summer'>Summer</label> */}
+
         <br />
 
-        <label>
+        {/* <label>
           Photo
           <input
             type="text"
@@ -161,7 +163,7 @@ export default function CreateForm() {
           />
         </label>
 
-        <br />
+        <br /> */}
 
         <label>
           Countries

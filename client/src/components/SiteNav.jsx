@@ -11,8 +11,11 @@ export default function NavBar() {
       <NavLink to="/countries">
         <button>COUNTRIES</button>
       </NavLink>
-      <NavLink to="/activities">
+      {/* <NavLink to="/activities">
         <button>ACTIVITIES</button>
+      </NavLink> */}
+      <NavLink to="/activities/create">
+        <button>CREATE ACTIVITY</button>
       </NavLink>
       <NavLink to="/about">
         <button>ABOUT</button>
