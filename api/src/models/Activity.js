@@ -38,13 +38,13 @@ module.exports = (sequelize) => {
         // unique: "uniqueActivity",
       },
       //   Extra Property
-      picture: {
-        type: DataTypes.STRING,
-      },
+      //   picture: {
+      //     type: DataTypes.STRING,
+      //   },
     },
     //
     // Modify default timestamp titles
-    { timestamps: false },
+    { createdAt: false, updatedAt: false },
     //
     // Modify default table name
     { tableName: "activities" }

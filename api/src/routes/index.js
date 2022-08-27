@@ -39,12 +39,11 @@ router.get("/countries", async (req, res) => {
     if (!count) await getCountries();
     // once the DB has all API data, execute findCountries
     const find = await findCountries(name);
-    find.length
-      ? res.json(find)
-      : res.status(404).send("Error @ routes/index/countries");
-    // res.send(await findCountries());
+    return res.json(find);
+    // find.length
+    //   ? res.json(find)
+    //   : res.status(404).send("Error @ routes/index/countries");
   } catch (e) {
-    // console.error(e.message);
     res.status(404).send(`Error --→ ${e}`);
   }
 });
@@ -98,6 +97,7 @@ router.get("/activities/:id", async (req, res) => {
 
 // POST @ /ACTIVITIES
 router.post("/activities", async (req, res) => {
+  console.log(req.body);
   try {
     // const { name, difficulty, duration, season } = req.body;
     const newActivity = await addActivity(req.body);

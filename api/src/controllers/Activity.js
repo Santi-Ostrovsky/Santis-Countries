@@ -54,18 +54,16 @@ const addActivity = async (content) => {
       difficulty,
       duration,
       season,
-      picture,
+      //   picture,
       countries,
     });
     //   Link activity to its countries
     await newActivity.addCountry(countries);
 
     console.log(`Activity successfully added to database`);
-    res.json(newActivity);
     return await Activity.findByPk(newActivity.id, {
       include: { model: Country, attributes: ["id"] },
     });
-    // return newActivity;
   } catch (e) {
     // Error msg in case data insertion failed
     console.error(`${ERROR}addActivity --> ${e}`);

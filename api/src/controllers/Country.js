@@ -55,9 +55,7 @@ const findCountries = async (name) => {
         { where: { name: { [Op.iLike]: `%${name}%` } } },
         { include: [Activity] }
       );
-      //   const arr = [find];
       console.log(`findCountries?name was executed successfully.`);
-      return find;
     } else {
       // If name is NOT given, bring all Countries from DB
       find = await Country.findAll({
@@ -70,9 +68,15 @@ const findCountries = async (name) => {
         },
       });
       console.log(`findCountries was executed successfully.`);
-      //   console.log(find.length);
-      return find;
     }
+    return find.map((c) => {
+      return {
+        id: c.id,
+        name: c.name,
+        continent: c.continent,
+        flag: c.flag,
+      };
+    });
   } catch (e) {
     // Error msg in case data call failed
     console.error(`${ERROR}findCountries --→ ${e}`);
