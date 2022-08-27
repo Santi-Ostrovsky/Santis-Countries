@@ -77,7 +77,9 @@ router.get("/activities", async (req, res) => {
     const { id } = req.params;
     // AGREGAR ID
     const find = await getActivities(id);
-    find.length ? res.json(find) : res.send(`No activities were created yet!`);
+    find.length
+      ? res.json(find)
+      : console.error(`No activities were created yet!`);
   } catch (e) {
     res.status(404).send(`Error --> ${e}`); // Not found
   }

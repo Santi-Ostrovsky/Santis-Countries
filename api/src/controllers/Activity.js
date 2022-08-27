@@ -61,6 +61,7 @@ const addActivity = async (content) => {
     await newActivity.addCountry(countries);
 
     console.log(`Activity successfully added to database`);
+    res.json(newActivity);
     return await Activity.findByPk(newActivity.id, {
       include: { model: Country, attributes: ["id"] },
     });
