@@ -1,11 +1,10 @@
 import React from "react";
 
-export default function ActivityCard({ name }) {
+export default function ActivityCard({ name, picture }) {
   return (
     <>
+      <img src={picture} alt={`${name}`} />
       <h3>{name}</h3>
-      {/* <img src={flag} alt={`${name} flag`} />
-      <h5>{continent}</h5> */}
     </>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function Error404() {
-  return <h1>Error404</h1>;
+  return <h2>Error, no countries match the selected filters.</h2>;
 }

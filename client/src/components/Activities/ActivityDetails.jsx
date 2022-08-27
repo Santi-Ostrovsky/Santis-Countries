@@ -10,8 +10,6 @@ export default function ActivityDetails() {
   details = details[0];
   const dispatch = useDispatch();
   const { id } = useParams();
-  console.log(details);
-  console.log(details.name);
 
   useEffect(() => {
     dispatch(getActivityDetails(id));
@@ -22,17 +20,17 @@ export default function ActivityDetails() {
   return (
     <div>
       <h1>{details.name}</h1>
-      {/* <SiteNav />
-      <div key={id}> */}
-      {/* <img
-        src={
-          img
-            ? img
-            : `https://i0.wp.com/elfutbolito.mx/wp-content/uploads/2019/04/image-not-found.png?ssl=1`
-        }
-        alt={`${name}'s flag`}
-      /> */}
-      {/* <h2>{name}</h2>
+      <SiteNav />
+      <div key={id}>
+        <img
+          src={
+            img
+              ? img
+              : `https://i0.wp.com/elfutbolito.mx/wp-content/uploads/2019/04/image-not-found.png?ssl=1`
+          }
+          alt={`${name}'s flag`}
+        />
+        <h2>{name}</h2>
         <h4>Difficulty</h4>
         <span>{difficulty}</span>
         <h4>Duration</h4>
@@ -45,7 +43,7 @@ export default function ActivityDetails() {
             return <li key={c.id}>{c.name}</li>;
           })}
         </ul>
-      </div> */}
+      </div>
     </div>
   );
 }

@@ -11,6 +11,14 @@ export const initialState = {
   allCountries: [],
   countries: [],
   details: [],
+  order: {
+    alphabeticalOrder: "All",
+    orderByPopulation: "All",
+  },
+  filters: {
+    byContinent: "All",
+    byActivity: "All",
+  },
   page: 1,
 };
 
@@ -79,6 +87,7 @@ export default function countries(state = initialState, action) {
       return {
         ...state,
         countries: currentCountries,
+        order: { ...state.order, alphabeticalOrder: payload },
       };
     //
     case ORDER_BY_POPULATION:
@@ -102,6 +111,7 @@ export default function countries(state = initialState, action) {
       return {
         ...state,
         countries: currentCountries2,
+        order: { ...state.order, orderByPopulation: payload },
       };
     //
     default:

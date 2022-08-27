@@ -11,7 +11,7 @@ export default function Activities() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(showActivities);
+    dispatch(showActivities());
   }, [dispatch]);
 
   //   console.log(activities);
@@ -24,7 +24,7 @@ export default function Activities() {
         return (
           <div key={a.id}>
             <Link to={`/activities/${a.id}`}>
-              <ActivityCard name={a.name} />
+              <ActivityCard name={a.name} picture={a.picture} />
             </Link>
           </div>
         );

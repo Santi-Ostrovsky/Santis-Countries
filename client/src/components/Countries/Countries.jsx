@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import SiteNav from "../SiteNav";
 import PagingCountries from "./PagingCountries";
 import Bar from "./Nav/Bar";
+import Error from "../Error";
 import { useSelector, useDispatch } from "react-redux";
 import { showCountries } from "../../redux/actions/countries";
 import { showActivities } from "../../redux/actions/activities";
@@ -29,19 +30,25 @@ export default function Countries() {
       <Bar />
       <PagingCountries allCountries={allCountries?.length} />
 
-      {countriesInPage?.map((c) => {
-        return (
-          <div key={c.id}>
-            <Link to={`/countries/${c.id}`}>
-              <CountryCard
-                name={c.name}
-                flag={c.flag}
-                continent={c.continent}
-              />
-            </Link>
-          </div>
-        );
-      })}
+      {countriesInPage.length ? (
+        countriesInPage.map((c) => {
+          return (
+            <div key={c.id}>
+              <Link to={`/countries/${c.id}`}>
+                <CountryCard
+                  name={c.name}
+                  flag={c.flag}
+                  continent={c.continent}
+                />
+              </Link>
+            </div>
+          );
+        })
+      ) : (
+        <div>
+          <Error />
+        </div>
+      )}
     </div>
   );
 }
