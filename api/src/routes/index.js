@@ -44,7 +44,8 @@ router.get("/countries", async (req, res) => {
     //   ? res.json(find)
     //   : res.status(404).send("Error @ routes/index/countries");
   } catch (e) {
-    res.status(404).send(`Error --→ ${e}`);
+    // res.status(404).send(`Error --→ ${e}`);
+    console.error(`Error --→ ${e}`);
   }
 });
 
