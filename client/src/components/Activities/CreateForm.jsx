@@ -32,28 +32,21 @@ export default function CreateForm() {
     countries: [],
   });
 
-  const camelCasify = (str) => {
-    return str
-      .toLowerCase()
-      .trim()
-      .split(" ")
-      .map((word) => word[0].toUpperCase() + word.slice(1))
-      .join(" ");
+  const format = (str) => {
+    return str.trim()[0].toUpperCase() + str.trim().slice(1).toLowerCase();
+    //   .trim().toLowerCase().split(" ")
+    //   .map((word) => word[0].toUpperCase() + word.slice(1))
+    //   .join(" ");
   };
 
-  //   const dontLeave = () => (
-  //     <>
-  //       <Prompt
-  //         when={shouldBlockNavigation}
-  //         message="You have unsaved changes, are you sure you want to leave?"
-  //       />
-  //       {/* Component JSX */}
-  //     </>
-  //   );
+  // Prevent user from leaving with unsaved data
+
+  // ----------------
+  // HANDLERS
+  // ----------------
 
   const handleName = (e) => {
     if (/^[a-z\s]*$/gi.test(e.target.value)) {
-      console.log(e.target.value);
       setError({ ...error, error: false, noName: false });
       setFields({ ...fields, name: e.target.value });
     } else {
@@ -90,18 +83,18 @@ export default function CreateForm() {
   const handleReset = () => {
     setFields({
       name: "",
-      difficulty: 1,
-      duration: 1,
-      season: "",
+      difficulty: null,
+      duration: null,
+      season: null,
       //   picture: "",
-      countries: [],
+      countries: null,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (fields.name !== "" && fields.season !== "") {
-      camelCasify(fields.name);
+      fields.name = format(fields.name);
       dispatch(createActivity(fields));
       handleReset();
       alert(`Activity "${fields.name}" successfully created!`);
@@ -114,6 +107,11 @@ export default function CreateForm() {
       if (!fields.countries.length) setError({ ...error, noCountries: true });
     }
   };
+
+  // ----------------
+  // RENDER FORM
+  // ----------------
+
   return (
     <>
       <SiteNav />
@@ -279,6 +277,9 @@ export default function CreateForm() {
           {/* <button type="button" onClick={handleReset}>
             Reset
           </button> */}
+          <button type="button" onClick={() => window.location.reload(false)}>
+            RESET
+          </button>
           <button type="submit">Create</button>
         </div>
       </form>

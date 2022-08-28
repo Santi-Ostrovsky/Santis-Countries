@@ -1,16 +1,13 @@
 import React from "react";
 import SiteNav from "../SiteNav";
-import AboutSite from "./AboutSite";
-import AboutMe from "./AboutMe";
+import AboutNav from "./AboutNav";
+// import { NavLink } from "react-router-dom";
 
 export default function About() {
   return (
-    <>
+    <div>
       <SiteNav />
-      <div>
-        <AboutSite />
-        <AboutMe />
-      </div>
-    </>
+      <AboutNav />
+    </div>
   );
 }

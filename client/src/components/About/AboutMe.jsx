@@ -1,5 +1,15 @@
 import React from "react";
+import SiteNav from "../SiteNav";
+import AboutNav from "./AboutNav";
 
 export default function AboutMe() {
-  return <h2>AboutMe</h2>;
+  return (
+    <div>
+      <div>
+        <SiteNav />
+        <AboutNav />
+      </div>
+      <h2>About Me</h2>
+    </div>
+  );
 }

@@ -7,9 +7,9 @@ import OrderByPopulation from "./OrderByPopulation";
 import SearchBar from "./SearchBar";
 
 export default function Bar() {
-  //   const handleClear = () => {
-  //     window.location.reload(false);
-  //   };
+  const handleClear = () => {
+    window.location.reload(false);
+  };
 
   return (
     <div>
@@ -17,7 +17,7 @@ export default function Bar() {
       <Filter />
       <OrderByAZ />
       <OrderByPopulation />
-      {/* <button onClick={handleClear}>CLEAR FILTERS</button> */}
+      <button onClick={handleClear}>CLEAR FILTERS</button>
     </div>
   );
 }

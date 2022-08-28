@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import SiteNav from "../SiteNav";
 import PagingCountries from "./PagingCountries";
 import Bar from "./Nav/Bar";
-import Error from "../Error";
+import FilterError from "../FilterError";
 import { useSelector, useDispatch } from "react-redux";
 import { showCountries, clearDetails } from "../../redux/actions/countries";
 import { showActivities } from "../../redux/actions/activities";
@@ -19,7 +19,6 @@ export default function Countries() {
     dispatch(clearDetails());
   }, [dispatch]);
 
-  console.log(allCountries.sort((a, b) => a.length - b.length));
   // Paging props
   const currentPage = useSelector((state) => state.countries.page);
   const lastIndex = 10 * currentPage;
@@ -48,7 +47,7 @@ export default function Countries() {
         })
       ) : (
         <div>
-          <Error />
+          <FilterError />
         </div>
       )}
     </div>
