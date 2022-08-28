@@ -11,20 +11,35 @@ export default function CreateForm() {
   const allCountries = useSelector((state) => state.countries.allCountries);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const seasons = ["Summer", "Autumn", "Winter", "Spring"];
 
   useEffect(() => {
     dispatch(showCountries());
   }, [dispatch]);
 
-  const [error, setError] = useState(false);
+  const [error, setError] = useState({
+    error: false,
+    noName: "",
+    noSeason: "",
+    noCountries: "",
+  });
   const [fields, setFields] = useState({
     name: "",
-    difficulty: 1,
-    duration: 1,
+    difficulty: "1",
+    duration: "1",
     season: "",
     // picture: "",
     countries: [],
   });
+
+  const camelCasify = (str) => {
+    return str
+      .toLowerCase()
+      .trim()
+      .split(" ")
+      .map((word) => word[0].toUpperCase() + word.slice(1))
+      .join(" ");
+  };
 
   //   const dontLeave = () => (
   //     <>
@@ -38,20 +53,34 @@ export default function CreateForm() {
 
   const handleName = (e) => {
     if (/^[a-z\s]*$/gi.test(e.target.value)) {
-      setError(false);
+      console.log(e.target.value);
+      setError({ ...error, error: false, noName: false });
       setFields({ ...fields, name: e.target.value });
     } else {
-      setError(true);
+      setError({ ...error, error: true });
+    }
+  };
+
+  const handleSeason = (e) => {
+    if (e.target.value !== "Select Season") {
+      setFields({ ...fields, season: e.target.value });
+      setError({ ...error, noSeason: false });
+    } else {
+      setFields({ ...fields, season: "" });
+      setError({ ...error, noSeason: true });
     }
   };
 
   const handleCountries = (e) => {
-    if (!fields.countries?.includes(e.target.value))
-      setFields({
-        ...fields,
-        countries: [...fields.countries, e.target.value],
-      });
-    else alert(`${e.target.value} has already been selected.`);
+    if (e.target.value !== "Select Countries") {
+      if (!fields.countries?.includes(e.target.value)) {
+        setError({ ...error, noCountries: false });
+        setFields({
+          ...fields,
+          countries: [...fields.countries, e.target.value],
+        });
+      } else alert(`${e.target.value} has already been selected.`);
+    }
   };
 
   const handleDelete = (e) => {
@@ -71,86 +100,133 @@ export default function CreateForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (fields.name !== "") {
+    if (fields.name !== "" && fields.season !== "") {
+      camelCasify(fields.name);
       dispatch(createActivity(fields));
       handleReset();
       alert(`Activity "${fields.name}" successfully created!`);
       navigate(`/countries`);
-    } else alert(`Activity name cannot be empty`);
+      //
+    } else {
+      if (fields.name === "") setError({ ...error, noName: true });
+      if (fields.season === "" || fields.season === "Select Season")
+        setError({ ...error, noSeason: true });
+      if (!fields.countries.length) setError({ ...error, noCountries: true });
+    }
   };
   return (
     <>
       <SiteNav />
-      <h2>CreateForm</h2>
+
+      <h2>Create your own Tourist Activity!</h2>
+
       <form onSubmit={(e) => handleSubmit(e)}>
-        <label>
-          Activity Name
-          <input
-            type="text"
-            value={fields.name}
-            placeholder="ex: Hiking"
-            onChange={(e) => handleName(e)}
-          ></input>
-        </label>
-        <span className={error ? "error" : "noError"}>
-          Activity name can only contain letters and white spaces
-        </span>
+        <div>
+          <label>
+            Activity Name
+            <input
+              type="text"
+              value={fields.name}
+              placeholder="ex: Hiking"
+              onChange={(e) => handleName(e)}
+            ></input>
+          </label>
+          <p className={error.error ? "error" : "noError"}>
+            Activity name can only contain letters and white spaces
+          </p>
+          <p className={error.noName ? "error" : "noError"}>
+            Activity name can not be empty
+          </p>
+        </div>
 
         <br />
 
-        <label>
-          Difficulty
-          <input
-            type="range"
-            defaultValue={1}
-            min={1}
-            max={5}
-            // value={fields.difficulty}
-            step={1}
-            onChange={(e) =>
-              setFields({ ...fields, difficulty: e.target.value })
-            }
-          ></input>
-        </label>
-        {fields.difficulty}
+        <div>
+          <label>
+            Difficulty
+            <input
+              type="range"
+              defaultValue={"1"}
+              min={1}
+              max={5}
+              // value={fields.difficulty}
+              step={1}
+              onChange={(e) =>
+                setFields({ ...fields, difficulty: e.target.value })
+              }
+            ></input>
+          </label>
+          <div>
+            {fields.difficulty === "1"
+              ? "Beginner"
+              : fields.difficulty === "2"
+              ? "Amateur"
+              : fields.difficulty === "3"
+              ? "Intermediate"
+              : fields.difficulty === "4"
+              ? "Advanced"
+              : "Expert"}
+          </div>
+        </div>
 
         <br />
 
-        <label>
-          Duration
-          <input
-            type="range"
-            defaultValue={1}
-            min={1}
-            max={24}
-            // value={fields.duration}
-            step={1}
-            onChange={(e) => setFields({ ...fields, duration: e.target.value })}
-          ></input>
-        </label>
-        {fields.duration}
+        <div>
+          <label>
+            Duration
+            <input
+              type="range"
+              defaultValue={"1"}
+              min={1}
+              max={24}
+              step={1}
+              onChange={(e) =>
+                setFields({ ...fields, duration: e.target.value })
+              }
+            ></input>
+          </label>
+          <div>
+            {fields.duration + (fields.duration === "1" ? " Hour" : " Hours")}
+          </div>
+        </div>
 
         <br />
 
-        <label>
-          Season
-          <select
-            onChange={(e) => setFields({ ...fields, season: e.target.value })}
-            required
-          >
-            <option>Select Season</option>
-            {["Summer", "Autumn", "Winter", "Spring"].map((s, i) => {
-              return (
-                <option key={i} value={s.toLowerCase()}>
-                  {s}
-                </option>
-              );
-            })}
-          </select>
-        </label>
+        <div>
+          <label>
+            Season
+            <select onChange={(e) => handleSeason(e)} required>
+              <option>Select Season</option>
+              {seasons.map((s, i) => {
+                return (
+                  <option key={i} value={s.toLowerCase()}>
+                    {s}
+                  </option>
+                );
+              })}
+            </select>
+          </label>
+          <p className={error.noSeason ? "error" : "noError"}>
+            Please, select a season
+          </p>
+        </div>
 
         {/* <div>Season</div>
-        <label for='summer'>Summer</label> */}
+        {seasons.map((s, i) => {
+          return (
+            <div key={i}>
+              <label htmlFor={`check-${s}`}>
+                {s}
+                <input
+                  type="checkbox"
+                  name="season"
+                  id={`checkbox-${s}`}
+                  onchange={(e) => handleSeason(e)}
+                ></input>
+              </label>
+            </div>
+          );
+        })} */}
 
         <br />
 
@@ -165,39 +241,46 @@ export default function CreateForm() {
 
         <br /> */}
 
-        <label>
-          Countries
-          <select onChange={(e) => handleCountries(e)} required>
-            <option>Select Countries</option>
-            {allCountries?.map((c) => {
+        <div>
+          <label>
+            Countries
+            <select onChange={(e) => handleCountries(e)} required>
+              <option>Select Countries</option>
+              {allCountries?.map((c) => {
+                return (
+                  <option key={c.id} value={c.id}>
+                    {c.name}
+                  </option>
+                );
+              })}
+            </select>
+            <br />
+          </label>
+          {allCountries
+            ?.filter((c) => c.id === fields.countries.includes(c.id))
+            .map((c) => {
               return (
-                <option key={c.id} value={c.id}>
+                <div key={c.id} value={c.id}>
+                  {c.flag}
+                  {"\n"}
                   {c.name}
-                </option>
+                  <button onClick={(e) => handleDelete(e)}>❌</button>
+                </div>
               );
             })}
-          </select>
-          <br />
-        </label>
-        {allCountries
-          ?.filter((c) => c.id === fields.countries.includes(c.id))
-          .map((c) => {
-            return (
-              <div key={c.id} value={c.id}>
-                {c.flag}
-                {"\n"}
-                {c.name}
-                <button onClick={(e) => handleDelete(e)}>❌</button>
-              </div>
-            );
-          })}
+          <p className={error.noCountries ? "error" : "noError"}>
+            Please, select at least one country
+          </p>
+        </div>
 
         <br />
 
-        <button type="button" onClick={handleReset}>
-          Reset
-        </button>
-        <button type="submit">Create</button>
+        <div>
+          {/* <button type="button" onClick={handleReset}>
+            Reset
+          </button> */}
+          <button type="submit">Create</button>
+        </div>
       </form>
     </>
   );

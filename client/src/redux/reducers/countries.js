@@ -1,6 +1,7 @@
 import {
   GET_COUNTRIES,
   GET_DETAILS,
+  CLEAR_DETAILS,
   GET_COUNTRY_BY_NAME,
   FILTER,
   ORDER_ALPHABETICALLY,
@@ -35,6 +36,12 @@ export default function countries(state = initialState, action) {
       };
     //
     case GET_DETAILS:
+      return {
+        ...state,
+        details: payload,
+      };
+    //
+    case CLEAR_DETAILS:
       return {
         ...state,
         details: payload,

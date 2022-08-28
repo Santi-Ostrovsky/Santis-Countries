@@ -6,10 +6,11 @@ import AboutMe from "./AboutMe";
 export default function About() {
   return (
     <>
-      <h1>About</h1>
       <SiteNav />
-      <AboutSite />
-      <AboutMe />
+      <div>
+        <AboutSite />
+        <AboutMe />
+      </div>
     </>
   );
 }

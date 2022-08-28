@@ -1,10 +1,9 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { orderByPopulation } from "../../../redux/actions/countries";
 
 export default function OrderByPopulation() {
   const dispatch = useDispatch();
-  let order = useSelector((state) => state.countries.order);
 
   return (
     <div>

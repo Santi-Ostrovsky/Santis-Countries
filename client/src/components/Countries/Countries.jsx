@@ -4,7 +4,7 @@ import PagingCountries from "./PagingCountries";
 import Bar from "./Nav/Bar";
 import Error from "../Error";
 import { useSelector, useDispatch } from "react-redux";
-import { showCountries } from "../../redux/actions/countries";
+import { showCountries, clearDetails } from "../../redux/actions/countries";
 import { showActivities } from "../../redux/actions/activities";
 import CountryCard from "./CountryCard";
 import { Link } from "react-router-dom";
@@ -16,8 +16,10 @@ export default function Countries() {
   useEffect(() => {
     dispatch(showCountries());
     dispatch(showActivities());
+    dispatch(clearDetails());
   }, [dispatch]);
 
+  console.log(allCountries.sort((a, b) => a.length - b.length));
   // Paging props
   const currentPage = useSelector((state) => state.countries.page);
   const lastIndex = 10 * currentPage;

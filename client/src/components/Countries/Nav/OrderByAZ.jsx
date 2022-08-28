@@ -1,10 +1,9 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { orderAlphabetically } from "../../../redux/actions/countries";
 
 export default function OrderByAZ() {
   const dispatch = useDispatch();
-  let order = useSelector((state) => state.countries.order);
 
   return (
     <div>

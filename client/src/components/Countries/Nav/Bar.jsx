@@ -7,13 +7,17 @@ import OrderByPopulation from "./OrderByPopulation";
 import SearchBar from "./SearchBar";
 
 export default function Bar() {
+  //   const handleClear = () => {
+  //     window.location.reload(false);
+  //   };
+
   return (
     <div>
       <SearchBar />
       <Filter />
       <OrderByAZ />
       <OrderByPopulation />
-      <button>CLEAR FILTERS</button>
+      {/* <button onClick={handleClear}>CLEAR FILTERS</button> */}
     </div>
   );
 }
