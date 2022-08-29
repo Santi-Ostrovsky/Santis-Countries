@@ -22,6 +22,7 @@ export const initialState = {
     byActivity: "All",
   },
   page: 1,
+  loaded: true,
 };
 
 export default function countries(state = initialState, action) {
@@ -33,12 +34,14 @@ export default function countries(state = initialState, action) {
         ...state,
         allCountries: payload,
         countries: payload,
+        loaded: false,
       };
     //
     case GET_DETAILS:
       return {
         ...state,
         details: payload,
+        loaded: false,
       };
     //
     case CLEAR_DETAILS:

@@ -8,6 +8,7 @@ import {
   ORDER_ALPHABETICALLY,
   ORDER_BY_POPULATION,
   SET_CURRENT_PAGE,
+  LOAD,
 } from "./actionTypes";
 
 const PATH = "http://localhost:3001/countries/";
@@ -66,23 +67,7 @@ export const getCountryName = (name) => {
   };
 };
 
-// // FILTER BY CONTINENT
-// export const filterCountries = (payload) => {
-//   return {
-//     type: FILTER_BY_CONTINENT,
-//     payload,
-//   };
-// };
-
-// // FILTER BY ACTIVITY
-// export const filterByActivity = (payload) => {
-//   return {
-//     type: FILTER_BY_ACTIVITY,
-//     payload,
-//   };
-// };
-
-// GENERAL FILTER
+// FILTER
 export const filter = (payload) => {
   return {
     type: FILTER,
@@ -105,8 +90,6 @@ export const orderByPopulation = (payload) => {
     payload,
   };
 };
-
-// CLEAR FILTERS
 
 // PAGING
 export const paging = (payload) => {

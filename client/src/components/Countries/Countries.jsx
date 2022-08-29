@@ -7,10 +7,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { showCountries, clearDetails } from "../../redux/actions/countries";
 import { showActivities } from "../../redux/actions/activities";
 import CountryCard from "./CountryCard";
+// import Loader from "../Loader";
 import { Link } from "react-router-dom";
+import styles from "../../styles/Countries/Countries.module.css";
 
 export default function Countries() {
   const allCountries = useSelector((state) => state.countries.countries);
+  //   const loaded = useSelector((state) => state.countries.loaded);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,8 +28,11 @@ export default function Countries() {
   const firstIndex = lastIndex - 10;
   const countriesInPage = allCountries?.slice(firstIndex, lastIndex);
 
+  //   return loaded ? (
+  //     <Loader />
+  //   ) :
   return (
-    <div>
+    <div className={styles.container}>
       <SiteNav />
       <Bar />
       <PagingCountries allCountries={allCountries?.length} />

@@ -5,6 +5,7 @@ import Filter from "../Nav/Filters/Filters";
 import OrderByAZ from "./OrderByAZ";
 import OrderByPopulation from "./OrderByPopulation";
 import SearchBar from "./SearchBar";
+import styles from "../../../styles/Countries/Nav/Bar.module.css";
 
 export default function Bar() {
   const handleClear = () => {
@@ -12,7 +13,7 @@ export default function Bar() {
   };
 
   return (
-    <div>
+    <div className={styles.bar}>
       <SearchBar />
       <Filter />
       <OrderByAZ />

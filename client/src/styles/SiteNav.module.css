@@ -1,0 +1,51 @@
+* {
+  font-family: "Handlee", cursive;
+  text-decoration: none;
+  color: #ffffffcc;
+  /* position: relative; */
+}
+
+*:link {
+  color: #ffffffcc;
+}
+
+*:visited {
+  color: #ffffffcc;
+}
+
+.nav {
+  padding: 1.5%;
+  background: #000000aa;
+  /* position: relative; */
+}
+
+h1 {
+  display: inline;
+}
+
+.h1_button {
+  background: none;
+  border: none;
+}
+
+.h1_button :hover {
+  color: #888888ff;
+  transition: 0.3s;
+}
+
+.nav_buttons {
+  float: right;
+  margin-top: 0.4%;
+  margin-right: 1%;
+}
+.nav_button {
+  margin-right: 50px;
+  font-size: 20px;
+  text-align: center;
+}
+
+button {
+  font-weight: bold;
+  background: none;
+  border: none;
+}

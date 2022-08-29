@@ -1,0 +1,11 @@
+.container {
+  background: url(../../assets/img/Countries/jakob-braun-vpsPRd_rz-A-un3splash.jpg)
+    no-repeat 50% 50% #10101099;
+  background-size: 100%;
+  object-fit: cover;
+  z-index: 0;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  box-shadow: -50px -50px 25px 25px #00000044 inset;
+}

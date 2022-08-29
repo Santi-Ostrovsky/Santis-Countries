@@ -1,14 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/Landing.css";
+import styles from "../styles/Landing.module.css";
 
 export default function Landing() {
   return (
-    <div className="container">
-      <div className="img">
-        <h1 className="App">Santi's Countries</h1>
+    <div className={styles.container}>
+      <div className={styles.box}>
+        <div className={styles.msg}>
+          <h1>Santi's Countries</h1>
+          <p className={styles.p}>
+            Welcome to my countries App, where you can learn about every country
+            in the world...
+          </p>
+        </div>
         <Link to="/countries">
-          <button autoFocus>DISCOVER</button>
+          <button className={styles.button}>
+            <span className={styles.actual_text}>&nbsp;discover&nbsp;</span>
+            <span className={styles.hover_text} aria-hidden="true">
+              &nbsp;discover&nbsp;
+            </span>
+          </button>
         </Link>
       </div>
     </div>
