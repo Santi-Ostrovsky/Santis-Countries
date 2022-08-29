@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { createActivity } from "../../redux/actions/activities";
 import { showCountries } from "../../redux/actions/countries";
 import SiteNav from "../SiteNav";
+import FormCard from "./FormCard";
 import "../../styles/Activities/CreateForm.css";
 
 export default function CreateForm() {
@@ -19,9 +20,9 @@ export default function CreateForm() {
 
   const [error, setError] = useState({
     error: false,
-    noName: "",
-    noSeason: "",
-    noCountries: "",
+    noName: null,
+    noSeason: null,
+    noCountries: null,
   });
   const [fields, setFields] = useState({
     name: "",
@@ -31,6 +32,13 @@ export default function CreateForm() {
     // picture: "",
     countries: [],
   });
+
+  //   useEffect(() => {
+  //     if (fields.name === "") setError({ ...error, noName: true });
+  //     if (fields.season === "" || fields.season === "Select Season")
+  //       setError({ ...error, noSeason: true });
+  //     if (!fields.countries.length) setError({ ...error, noCountries: true });
+  //   }, [fields.countries]);
 
   const format = (str) => {
     return str.trim()[0].toUpperCase() + str.trim().slice(1).toLowerCase();
@@ -72,12 +80,19 @@ export default function CreateForm() {
           ...fields,
           countries: [...fields.countries, e.target.value],
         });
-      } else alert(`${e.target.value} has already been selected.`);
+      } else {
+        let filtrados = allCountries.filter((c) =>
+          fields.countries.includes(c.id)
+        );
+        let nombres = filtrados.map((ele) => ele.name);
+        console.log(nombres);
+        // alert(
+        //   `${
+        //     allCountries.filter((c) => fields.countries.includes(c.id))[0].name
+        //   } has already been selected.`
+        // );
+      }
     }
-  };
-
-  const handleDelete = (e) => {
-    fields.countries?.filter((c) => c !== e.target.value);
   };
 
   const handleReset = () => {
@@ -129,12 +144,14 @@ export default function CreateForm() {
               onChange={(e) => handleName(e)}
             ></input>
           </label>
-          <p className={error.error ? "error" : "noError"}>
-            Activity name can only contain letters and white spaces
+          <p className={error.error || error.noName ? "error" : "noError"}>
+            {error.error
+              ? "Activity name can only contain letters and white spaces"
+              : "Activity name can not be empty"}
           </p>
-          <p className={error.noName ? "error" : "noError"}>
+          {/* <p className={error.noName ? "error" : "noError"}>
             Activity name can not be empty
-          </p>
+          </p> */}
         </div>
 
         <br />
@@ -254,16 +271,30 @@ export default function CreateForm() {
             </select>
             <br />
           </label>
+
           {allCountries
-            ?.filter((c) => c.id === fields.countries.includes(c.id))
+            ?.filter((c) => fields.countries.includes(c.id))
             .map((c) => {
               return (
-                <div key={c.id} value={c.id}>
-                  {c.flag}
-                  {"\n"}
-                  {c.name}
-                  <button onClick={(e) => handleDelete(e)}>❌</button>
-                </div>
+                <FormCard
+                  key={c.id}
+                  id={c.id}
+                  name={c.name}
+                  flag={c.flag}
+                  state={fields}
+                  setState={setFields}
+                />
+                // <div key={c.id} value={c.id}>
+                //   <button
+                //     key={c.id}
+                //     type="button"
+                //     onClick={(e) => handleDelete(e)}
+                //   >
+                //     <img src={c.flag} alt={`${c.name}'s flag`} />
+                //     {"\n"}
+                //     {c.name}
+                //   </button>
+                // </div>
               );
             })}
           <p className={error.noCountries ? "error" : "noError"}>
