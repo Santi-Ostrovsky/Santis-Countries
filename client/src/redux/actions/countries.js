@@ -8,7 +8,7 @@ import {
   ORDER_ALPHABETICALLY,
   ORDER_BY_POPULATION,
   SET_CURRENT_PAGE,
-  LOAD,
+  //   LOAD,
 } from "./actionTypes";
 
 const PATH = "http://localhost:3001/countries/";
