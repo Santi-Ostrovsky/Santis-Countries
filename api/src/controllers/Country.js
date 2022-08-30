@@ -73,6 +73,7 @@ const findCountries = async (name) => {
         name: c.name,
         continent: c.continent,
         flag: c.flag,
+        population: c.population,
         activities: c.activities,
       };
     });
