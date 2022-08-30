@@ -1,11 +1,11 @@
 import React from "react";
 import SiteNav from "../SiteNav";
 import AboutNav from "./AboutNav";
-// import { NavLink } from "react-router-dom";
+import styles from "../../styles/About/About.module.css";
 
 export default function About() {
   return (
-    <div>
+    <div className={styles.container}>
       <SiteNav />
       <AboutNav />
     </div>

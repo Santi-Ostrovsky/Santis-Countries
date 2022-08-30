@@ -6,7 +6,7 @@ import { createActivity } from "../../redux/actions/activities";
 import { showCountries } from "../../redux/actions/countries";
 import SiteNav from "../SiteNav";
 import FormCard from "./FormCard";
-import "../../styles/Activities/CreateForm.css";
+import styles from "../../styles/Activities/CreateForm.module.css";
 
 export default function CreateForm() {
   const allCountries = useSelector((state) => state.countries.allCountries);
@@ -32,13 +32,6 @@ export default function CreateForm() {
     // picture: "",
     countries: [],
   });
-
-  //   useEffect(() => {
-  //     if (fields.name === "") setError({ ...error, noName: true });
-  //     if (fields.season === "" || fields.season === "Select Season")
-  //       setError({ ...error, noSeason: true });
-  //     if (!fields.countries.length) setError({ ...error, noCountries: true });
-  //   }, [fields.countries]);
 
   const format = (str) => {
     return str.trim()[0].toUpperCase() + str.trim().slice(1).toLowerCase();
@@ -128,192 +121,170 @@ export default function CreateForm() {
   // ----------------
 
   return (
-    <>
+    <div className={styles.container}>
       <SiteNav />
 
-      <h2>Create your own Tourist Activity!</h2>
+      <div className={styles.form_container}>
+        <div className={styles.title}>Create your own Tourist Activity!</div>
 
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <div>
-          <label>
-            Activity Name
-            <input
-              type="text"
-              value={fields.name}
-              placeholder="ex: Hiking"
-              onChange={(e) => handleName(e)}
-            ></input>
-          </label>
-          <p className={error.error || error.noName ? "error" : "noError"}>
-            {error.error
-              ? "Activity name can only contain letters and white spaces"
-              : "Activity name can not be empty"}
-          </p>
-          {/* <p className={error.noName ? "error" : "noError"}>
-            Activity name can not be empty
-          </p> */}
-        </div>
+        <div className={styles.outer_form}>
+          <div className={styles.inner_form}>
+            <form onSubmit={(e) => handleSubmit(e)}>
+              <div>
+                <label className={styles.activity_name}>
+                  Activity Name
+                  <input
+                    type="text"
+                    value={fields.name}
+                    placeholder="ex: Hiking"
+                    onChange={(e) => handleName(e)}
+                    className={styles.search_bar}
+                  ></input>
+                </label>
+                <div className={styles.error_msg}>
+                  <div
+                    className={
+                      error.error || error.noName ? "error" : "noError"
+                    }
+                  >
+                    {error.error
+                      ? "Activity name can only contain letters and white spaces"
+                      : "Activity name can not be empty"}
+                  </div>
+                </div>
+              </div>
 
-        <br />
+              <div>
+                <label className={styles.difficulty}>
+                  Difficulty
+                  <input
+                    type="range"
+                    defaultValue={"1"}
+                    min={1}
+                    max={5}
+                    step={1}
+                    onChange={(e) =>
+                      setFields({ ...fields, difficulty: e.target.value })
+                    }
+                  ></input>
+                </label>
+                <div className={styles.difficulty_msg}>
+                  {fields.difficulty === "1"
+                    ? "Beginner"
+                    : fields.difficulty === "2"
+                    ? "Amateur"
+                    : fields.difficulty === "3"
+                    ? "Intermediate"
+                    : fields.difficulty === "4"
+                    ? "Advanced"
+                    : "Expert"}
+                </div>
+              </div>
 
-        <div>
-          <label>
-            Difficulty
-            <input
-              type="range"
-              defaultValue={"1"}
-              min={1}
-              max={5}
-              // value={fields.difficulty}
-              step={1}
-              onChange={(e) =>
-                setFields({ ...fields, difficulty: e.target.value })
-              }
-            ></input>
-          </label>
-          <div>
-            {fields.difficulty === "1"
-              ? "Beginner"
-              : fields.difficulty === "2"
-              ? "Amateur"
-              : fields.difficulty === "3"
-              ? "Intermediate"
-              : fields.difficulty === "4"
-              ? "Advanced"
-              : "Expert"}
-          </div>
-        </div>
+              <div>
+                <label className={styles.duration}>
+                  Duration
+                  <input
+                    type="range"
+                    defaultValue={"1"}
+                    min={1}
+                    max={24}
+                    step={1}
+                    onChange={(e) =>
+                      setFields({ ...fields, duration: e.target.value })
+                    }
+                  ></input>
+                </label>
+                <div className={styles.duration_msg}>
+                  {fields.duration +
+                    (fields.duration === "1" ? " Hour" : " Hours")}
+                </div>
+              </div>
 
-        <br />
+              <div>
+                <label className={styles.season}>
+                  Season
+                  <select onChange={(e) => handleSeason(e)} required>
+                    <option>Select Season</option>
+                    {seasons.map((s, i) => {
+                      return (
+                        <option key={i} value={s.toLowerCase()}>
+                          {s}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </label>
+                <div className={error.noSeason ? "error" : "noError"}>
+                  Please, select a season
+                </div>
+              </div>
 
-        <div>
-          <label>
-            Duration
-            <input
-              type="range"
-              defaultValue={"1"}
-              min={1}
-              max={24}
-              step={1}
-              onChange={(e) =>
-                setFields({ ...fields, duration: e.target.value })
-              }
-            ></input>
-          </label>
-          <div>
-            {fields.duration + (fields.duration === "1" ? " Hour" : " Hours")}
-          </div>
-        </div>
-
-        <br />
-
-        <div>
-          <label>
-            Season
-            <select onChange={(e) => handleSeason(e)} required>
-              <option>Select Season</option>
-              {seasons.map((s, i) => {
-                return (
-                  <option key={i} value={s.toLowerCase()}>
-                    {s}
-                  </option>
-                );
-              })}
-            </select>
-          </label>
-          <p className={error.noSeason ? "error" : "noError"}>
-            Please, select a season
-          </p>
-        </div>
-
-        {/* <div>Season</div>
-        {seasons.map((s, i) => {
-          return (
-            <div key={i}>
-              <label htmlFor={`check-${s}`}>
-                {s}
-                <input
-                  type="checkbox"
-                  name="season"
-                  id={`checkbox-${s}`}
-                  onchange={(e) => handleSeason(e)}
-                ></input>
-              </label>
-            </div>
-          );
-        })} */}
-
-        <br />
-
-        {/* <label>
+              {/* <label>
           Photo
           <input
             type="text"
             placeholder="Insert image URL"
             onChange={(e) => setFields({ ...fields, picture: e.target.value })}
           />
-        </label>
+        </label> */}
 
-        <br /> */}
+              <div>
+                <label className={styles.countries}>
+                  Countries
+                  <select onChange={(e) => handleCountries(e)} required>
+                    <option>Select Countries</option>
+                    {allCountries?.map((c) => {
+                      return (
+                        <option key={c.id} value={c.id}>
+                          {c.name}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </label>
 
-        <div>
-          <label>
-            Countries
-            <select onChange={(e) => handleCountries(e)} required>
-              <option>Select Countries</option>
-              {allCountries?.map((c) => {
-                return (
-                  <option key={c.id} value={c.id}>
-                    {c.name}
-                  </option>
-                );
-              })}
-            </select>
-            <br />
-          </label>
+                <div className={error.noCountries ? "error" : "noError"}>
+                  Please, select at least one country
+                </div>
+              </div>
 
-          {allCountries
-            ?.filter((c) => fields.countries.includes(c.id))
-            .map((c) => {
-              return (
-                <FormCard
-                  key={c.id}
-                  id={c.id}
-                  name={c.name}
-                  flag={c.flag}
-                  state={fields}
-                  setState={setFields}
-                />
-                // <div key={c.id} value={c.id}>
-                //   <button
-                //     key={c.id}
-                //     type="button"
-                //     onClick={(e) => handleDelete(e)}
-                //   >
-                //     <img src={c.flag} alt={`${c.name}'s flag`} />
-                //     {"\n"}
-                //     {c.name}
-                //   </button>
-                // </div>
-              );
-            })}
-          <p className={error.noCountries ? "error" : "noError"}>
-            Please, select at least one country
-          </p>
-        </div>
-
-        <br />
-
-        <div>
-          {/* <button type="button" onClick={handleReset}>
+              <div className={styles.footer}>
+                {/* <button type="button" onClick={handleReset}>
             Reset
           </button> */}
-          <button type="button" onClick={() => window.location.reload(false)}>
-            RESET
-          </button>
-          <button type="submit">Create</button>
+                <button
+                  type="button"
+                  onClick={() => window.location.reload(false)}
+                >
+                  RESET
+                </button>
+                <button type="submit">CREATE</button>
+              </div>
+            </form>
+
+            <div className={styles.cards_container}>
+              {allCountries
+                ?.filter((c) => fields.countries.includes(c.id))
+                .map((c) => {
+                  return (
+                    <div className={styles.card}>
+                      <FormCard
+                        key={c.id}
+                        id={c.id}
+                        name={c.name}
+                        flag={c.flag}
+                        state={fields}
+                        setState={setFields}
+                      />
+                    </div>
+                  );
+                })}
+            </div>
+            {/*  */}
+          </div>
         </div>
-      </form>
-    </>
+      </div>
+    </div>
   );
 }

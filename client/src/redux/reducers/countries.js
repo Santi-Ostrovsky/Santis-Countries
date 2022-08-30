@@ -114,8 +114,8 @@ export default function countries(state = initialState, action) {
       if (payload === "HIGHER") {
         aux2.sort((a, b) => (a.population < b.population ? -1 : 1));
         currentCountries2 = aux2;
-      }
-      if (payload === "LOWER") {
+      } //
+      else if (payload === "LOWER") {
         aux2.sort((a, b) => (a.population > b.population ? -1 : 1));
         currentCountries2 = aux2;
       }

@@ -1,0 +1,11 @@
+.container {
+  background: url(../../assets/img/About/aboutPage.jpg) no-repeat 50% 50%
+    #10101099;
+  background-size: 100%;
+  object-fit: cover;
+  z-index: 0;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
