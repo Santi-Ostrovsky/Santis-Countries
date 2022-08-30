@@ -30,9 +30,7 @@ const getCountries = async () => {
           region: c.region,
           unMember: c.unMember,
           // currencies: c.currencies[Object.keys(c.currencies)[0]].name,
-          maps: c.maps.googleMaps
-            ? c.maps.googleMaps
-            : `https://www.google.com/maps/place/${c.name.common}`,
+          maps: `https://www.google.com/maps/place/${c.name.common}`,
           timezones: c.timezones[0],
         },
       })
