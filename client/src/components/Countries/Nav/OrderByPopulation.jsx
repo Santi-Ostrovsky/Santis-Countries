@@ -13,7 +13,7 @@ export default function OrderByPopulation() {
           onChange={(e) => dispatch(orderByPopulation(e.target.value))}
           defaultValue={"All"}
         >
-          <option value="All">All</option>
+          <option value="All">None</option>
           <option value="HIGHER">Higher</option>
           <option value="LOWER">Lower</option>
         </select>

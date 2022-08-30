@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { paging } from "../../redux/actions/countries";
+import styles from "../../styles/Countries/Paging.module.css";
 
 export default function PagingCountries({ allCountries }) {
   const dispatch = useDispatch();
@@ -11,10 +12,15 @@ export default function PagingCountries({ allCountries }) {
     .map((e, i) => (e = i + 1));
 
   return (
-    <div>
+    <div className={styles.paging_container}>
       {pageNumber?.map((p) => {
         return (
-          <button key={p} value={p} onClick={() => dispatch(paging(p))}>
+          <button
+            key={p}
+            value={p}
+            className={styles.page_buttons}
+            onClick={() => dispatch(paging(p))}
+          >
             {p}
           </button>
         );

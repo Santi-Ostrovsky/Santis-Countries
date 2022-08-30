@@ -14,11 +14,25 @@ export default function Bar() {
 
   return (
     <div className={styles.bar}>
-      <SearchBar />
-      <Filter />
-      <OrderByAZ />
-      <OrderByPopulation />
-      <button onClick={handleClear}>CLEAR FILTERS</button>
+      <div className={styles.filters}>
+        <span className={styles.search_bar}>
+          <SearchBar />
+        </span>
+      </div>
+      <div className={styles.filters}>
+        <Filter />
+      </div>
+      <div className={styles.filters}>
+        <OrderByAZ />
+      </div>
+      <div className={styles.filters}>
+        <OrderByPopulation />
+      </div>
+      <span className={styles.clear_span}>
+        <button className={styles.clear_button} onClick={handleClear}>
+          CLEAR FILTERS
+        </button>
+      </span>
     </div>
   );
 }

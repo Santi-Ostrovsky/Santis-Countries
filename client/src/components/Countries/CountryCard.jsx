@@ -1,11 +1,14 @@
 import React from "react";
+import styles from "../../styles/Countries/CountryCard.module.css";
 
 export default function CountryCard({ name, flag, continent }) {
   return (
-    <>
-      <img src={flag} alt={`${name} flag`} />
-      <h4>{name}</h4>
-      <h5>{continent}</h5>
-    </>
+    <div className={styles.card}>
+      <img src={flag} alt={`${name} flag`} className={styles.flag} />
+      <div className={styles.captions}>
+        <h4>{name}</h4>
+        <h5>{continent}</h5>
+      </div>
+    </div>
   );
 }

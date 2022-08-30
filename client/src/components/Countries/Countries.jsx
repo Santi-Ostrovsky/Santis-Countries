@@ -35,27 +35,32 @@ export default function Countries() {
     <div className={styles.container}>
       <SiteNav />
       <Bar />
-      <PagingCountries allCountries={allCountries?.length} />
 
-      {countriesInPage.length ? (
-        countriesInPage.map((c) => {
-          return (
-            <div key={c.name}>
-              <Link to={`/countries/${c.id}`}>
-                <CountryCard
-                  name={c.name}
-                  flag={c.flag}
-                  continent={c.continent}
-                />
-              </Link>
-            </div>
-          );
-        })
-      ) : (
-        <div>
-          <FilterError />
-        </div>
-      )}
+      <div className={styles.cards_container}>
+        {countriesInPage.length ? (
+          countriesInPage.map((c) => {
+            return (
+              <div key={c.name} className={styles.cards}>
+                <Link to={`/countries/${c.id}`}>
+                  <CountryCard
+                    name={c.name}
+                    flag={c.flag}
+                    continent={c.continent}
+                  />
+                </Link>
+              </div>
+            );
+          })
+        ) : (
+          <div>
+            <FilterError />
+          </div>
+        )}
+      </div>
+
+      <div className={styles.paging}>
+        <PagingCountries allCountries={allCountries?.length} />
+      </div>
     </div>
   );
 }

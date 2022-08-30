@@ -7,7 +7,7 @@ export default function Landing() {
     <div className={styles.container}>
       <div className={styles.box}>
         <div className={styles.msg}>
-          <h1>Santi's Countries</h1>
+          <h1 className={styles.title}>Santi's Countries</h1>
           <p className={styles.p}>
             Welcome to my countries App, where you can learn about every country
             in the world...

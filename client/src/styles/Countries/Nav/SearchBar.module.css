@@ -1,0 +1,27 @@
+.search_bar {
+  margin-top: 2%;
+  background-color: #ddd0;
+  border-width: 0 0 2px 0;
+  color: #ffffffcc;
+}
+
+.search_bar :focus {
+  border-width: 0 0 2px 0;
+  border-color: #fff;
+  outline: none;
+}
+
+.error {
+  color: #f22;
+}
+
+.noError {
+  color: #fff0;
+}
+
+.err_msg {
+  margin-top: 2%;
+  margin-bottom: -4%;
+  font-size: 20px;
+  font-weight: bold;
+}

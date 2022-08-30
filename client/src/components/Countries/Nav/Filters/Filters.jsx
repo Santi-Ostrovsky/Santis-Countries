@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { filter } from "../../../../redux/actions/countries";
 import FilterByContinent from "./FilterByContinent";
 import FilterByActivity from "./FilterByActivity";
+import styles from "../../../../styles/Countries/Nav/Filters.module.css";
 
 export default function Filter() {
   const dispatch = useDispatch();
@@ -17,8 +18,12 @@ export default function Filter() {
 
   return (
     <div>
-      <FilterByContinent setFilterCountries={setFilterCountries} />
-      <FilterByActivity setFilterCountries={setFilterCountries} />
+      <div className={styles.continents}>
+        <FilterByContinent setFilterCountries={setFilterCountries} />
+      </div>
+      <div className={styles.activities}>
+        <FilterByActivity setFilterCountries={setFilterCountries} />
+      </div>
     </div>
   );
 }

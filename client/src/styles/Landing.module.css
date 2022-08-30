@@ -26,8 +26,18 @@
 }
 
 .msg {
-  font-size: 35px;
+  margin-top: 4%;
+}
+
+.title {
+  font-size: 50px;
+  text-shadow: 0px 0px 40px #000000;
+}
+
+p {
+  font-size: 38px;
   margin-top: 1%;
+  margin-bottom: 0%;
   text-shadow: 0px 0px 10px #000000;
 }
 
