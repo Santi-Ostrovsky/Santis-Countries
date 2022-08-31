@@ -127,7 +127,7 @@ export default function AboutSite() {
       <div className={styles.technologies}>
         {/*  */}
         <div className={styles.technology_container}>
-          <div className="vector">
+          <div>
             <svg width="50px" height="50px" viewBox="0 0 24 24">
               <g fill="none" fillRule="evenodd">
                 <rect width="50" height="50" fill="#F1DC50" />
@@ -139,11 +139,11 @@ export default function AboutSite() {
               </g>
             </svg>
           </div>
-          <div className="technology-title">JavaScript</div>
+          <div>JavaScript</div>
         </div>
 
         <div className={styles.technology_container}>
-          <div className="vector">
+          <div>
             <svg width="50px" height="50px" viewBox="0 0 30 30">
               <polygon
                 points="5.902 27.201 3.655 2 28.345 2 26.095 27.197 15.985 30 5.902 27.201"
@@ -171,7 +171,7 @@ export default function AboutSite() {
               />
             </svg>
           </div>
-          <div className="technology-title">HTML 5</div>
+          <div>HTML 5</div>
         </div>
 
         <div className={styles.technology_container}>
@@ -207,11 +207,11 @@ export default function AboutSite() {
               />
             </svg>
           </div>
-          <div className="technology-title">CSS 3</div>
+          <div>CSS 3</div>
         </div>
 
         <div className={styles.technology_container}>
-          <div className="vector">
+          <div>
             <svg
               width="50px"
               height="50px"
@@ -226,11 +226,11 @@ export default function AboutSite() {
               </g>
             </svg>
           </div>
-          <div className="technology-title">React</div>
+          <div>React</div>
         </div>
 
         <div className={styles.technology_container}>
-          <div className="vector">
+          <div>
             <svg
               width="50px"
               height="50px"
@@ -245,11 +245,11 @@ export default function AboutSite() {
               </g>
             </svg>
           </div>
-          <div className="technology-title">Redux</div>
+          <div>Redux</div>
         </div>
 
         <div className={styles.technology_container}>
-          <div className="vector">
+          <div>
             <svg width="50px" height="50px" viewBox="0 0 32 32">
               <path
                 d="M16,30a2.151,2.151,0,0,1-1.076-.288L11.5,27.685c-.511-.286-.262-.387-.093-.446a6.828,6.828,0,0,0,1.549-.7.263.263,0,0,1,.255.019l2.631,1.563a.34.34,0,0,0,.318,0l10.26-5.922a.323.323,0,0,0,.157-.278V10.075a.331.331,0,0,0-.159-.283L16.158,3.875a.323.323,0,0,0-.317,0L5.587,9.794a.33.33,0,0,0-.162.281V21.916a.315.315,0,0,0,.161.274L8.4,23.814c1.525.762,2.459-.136,2.459-1.038V11.085a.3.3,0,0,1,.3-.3h1.3a.3.3,0,0,1,.3.3V22.777c0,2.035-1.108,3.2-3.038,3.2a4.389,4.389,0,0,1-2.363-.642L4.661,23.788a2.166,2.166,0,0,1-1.076-1.872V10.075A2.162,2.162,0,0,1,4.661,8.2L14.922,2.276a2.246,2.246,0,0,1,2.156,0L27.338,8.2a2.165,2.165,0,0,1,1.077,1.87V21.916a2.171,2.171,0,0,1-1.077,1.872l-10.26,5.924A2.152,2.152,0,0,1,16,30Z"
@@ -261,11 +261,11 @@ export default function AboutSite() {
               />
             </svg>
           </div>
-          <div className="technology-title">NodeJs</div>
+          <div>NodeJs</div>
         </div>
 
         <div className={styles.technology_container}>
-          <div className="vector">
+          <div>
             <svg width="50px" height="50px" viewBox="0 0 24 24" role="img">
               <defs id="defs23" />
               <path
@@ -275,11 +275,11 @@ export default function AboutSite() {
               />
             </svg>
           </div>
-          <div className="technology-title">Express</div>
+          <div>Express</div>
         </div>
 
         <div className={styles.technology_container}>
-          <div className="vector">
+          <div>
             <svg width="50px" height="50px" viewBox="0 0 32 32">
               <path d="M29.507,18.773a1.378,1.378,0,0,0-1.144-.921,2.619,2.619,0,0,0-.913.051,8.2,8.2,0,0,1-1.406.185,27.125,27.125,0,0,0,2.872-6.83c.953-3.689.444-5.369-.151-6.13A8.239,8.239,0,0,0,22.121,2a11.773,11.773,0,0,0-3.453.484A12.858,12.858,0,0,0,16.648,2.3a6.565,6.565,0,0,0-3.518.867,16.039,16.039,0,0,0-2.484-.624,7.694,7.694,0,0,0-5.819.924C3.093,4.691,2.289,6.819,2.438,9.792A36.351,36.351,0,0,0,3.844,16.33a22.579,22.579,0,0,0,1.514,3.863A4.786,4.786,0,0,0,7.8,22.742a2.4,2.4,0,0,0,2.379-.516,2.08,2.08,0,0,0,.5.43,3.328,3.328,0,0,0,.944.4,5.069,5.069,0,0,0,3.3-.2c.006.171.011.335.014.477.006.229.013.454.021.665a11.641,11.641,0,0,0,.441,3.3c.016.043.037.107.059.176a3.975,3.975,0,0,0,.991,1.745,2.955,2.955,0,0,0,2.09.777,4.7,4.7,0,0,0,.977-.109A4.592,4.592,0,0,0,22.607,28.1c.811-1.155,1.206-2.894,1.277-5.635.009-.078.018-.152.026-.222l.017-.145.191.017.049,0a7.562,7.562,0,0,0,3.163-.548c.631-.293,2.654-1.361,2.177-2.8" />
               <path
@@ -296,11 +296,11 @@ export default function AboutSite() {
               />
             </svg>
           </div>
-          <div className="technology-title">PostegreSQL</div>
+          <div>PostegreSQL</div>
         </div>
 
         <div className={styles.technology_container}>
-          <div className="vector">
+          <div>
             <svg
               width="50px"
               height="50px"
@@ -419,7 +419,7 @@ export default function AboutSite() {
               </g>
             </svg>
           </div>
-          <div className="technology-title">Sequelize</div>
+          <div>Sequelize</div>
         </div>
         {/*  */}
       </div>

@@ -14,7 +14,7 @@ export default function Landing() {
           </p>
         </div>
         <div className={styles.discover}>
-          <Link to="/countries">
+          <Link to="/home">
             <button className={styles.button}>
               <span className={styles.actual_text}>&nbsp;discover&nbsp;</span>
               <span className={styles.hover_text} aria-hidden="true">
