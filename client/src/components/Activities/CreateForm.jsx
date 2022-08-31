@@ -106,7 +106,7 @@ export default function CreateForm() {
       dispatch(createActivity(fields));
       handleReset();
       alert(`Activity "${fields.name}" successfully created!`);
-      navigate(`/countries`);
+      navigate(`/home`);
       //
     } else {
       if (fields.name === "") setError({ ...error, noName: true });
@@ -256,32 +256,37 @@ export default function CreateForm() {
                 <button
                   type="button"
                   onClick={() => window.location.reload(false)}
+                  className={styles.reset}
                 >
                   RESET
                 </button>
-                <button type="submit">CREATE</button>
+                <button type="submit" className={styles.create}>
+                  CREATE
+                </button>
               </div>
             </form>
 
             <div className={styles.cards_container}>
-              {allCountries
-                ?.filter((c) => fields.countries.includes(c.id))
-                .map((c) => {
-                  return (
-                    <div className={styles.card}>
-                      <FormCard
-                        key={c.id}
-                        id={c.id}
-                        name={c.name}
-                        flag={c.flag}
-                        state={fields}
-                        setState={setFields}
-                      />
-                    </div>
-                  );
-                })}
+              <div>
+                {allCountries
+                  ?.filter((c) => fields.countries.includes(c.id))
+                  .map((c) => {
+                    return (
+                      <div className={styles.card}>
+                        <FormCard
+                          key={c.id}
+                          id={c.id}
+                          name={c.name}
+                          flag={c.flag}
+                          state={fields}
+                          setState={setFields}
+                        />
+                      </div>
+                    );
+                  })}
+              </div>
+              {/*  */}
             </div>
-            {/*  */}
           </div>
         </div>
       </div>

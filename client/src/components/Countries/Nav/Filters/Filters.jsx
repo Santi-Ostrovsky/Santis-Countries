@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { filter } from "../../../../redux/actions/countries";
+import { filter, paging } from "../../../../redux/actions/countries";
 import FilterByContinent from "./FilterByContinent";
 import FilterByActivity from "./FilterByActivity";
 import styles from "../../../../styles/Countries/Nav/Filters.module.css";
@@ -14,6 +14,7 @@ export default function Filter() {
 
   useEffect(() => {
     dispatch(filter(filterCountries));
+    dispatch(paging(1));
   }, [dispatch, filterCountries]);
 
   return (

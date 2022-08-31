@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../../styles/Activities/FormCard.module.css";
 
 export default function FormCard(props) {
   const { id, name, flag, state, setState } = props;
@@ -11,12 +12,13 @@ export default function FormCard(props) {
   };
 
   return (
-    <div>
-      <button onClick={handleClick}>
-        <div className="close">❌</div>
-        <img className="flag" src={flag} alt={`${name}'s flag`} />
-        <div className="name">{name}</div>
-      </button>
+    <div className={styles.card}>
+      <div className={styles.close_container}></div>
+      <button onClick={handleClick}>❌</button>
+      <img src={flag} alt={`${name}'s flag`} className={styles.flag} />
+      <div className={styles.captions}>
+        <div className={styles.name}>{name}</div>
+      </div>
     </div>
   );
 }

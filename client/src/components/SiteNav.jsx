@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "../styles/SiteNav.module.css";
 
 export default function NavBar() {
-  const [route, setRoute] = useState("home");
-
   return (
     <div className={styles.nav}>
       {/*  */}
