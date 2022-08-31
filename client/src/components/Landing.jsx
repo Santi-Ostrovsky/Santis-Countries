@@ -13,14 +13,16 @@ export default function Landing() {
             in the world...
           </p>
         </div>
-        <Link to="/countries">
-          <button className={styles.button}>
-            <span className={styles.actual_text}>&nbsp;discover&nbsp;</span>
-            <span className={styles.hover_text} aria-hidden="true">
-              &nbsp;discover&nbsp;
-            </span>
-          </button>
-        </Link>
+        <div className={styles.discover}>
+          <Link to="/countries">
+            <button className={styles.button}>
+              <span className={styles.actual_text}>&nbsp;discover&nbsp;</span>
+              <span className={styles.hover_text} aria-hidden="true">
+                &nbsp;discover&nbsp;
+              </span>
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

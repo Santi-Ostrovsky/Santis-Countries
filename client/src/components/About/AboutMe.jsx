@@ -1,15 +1,14 @@
 import React from "react";
-import SiteNav from "../SiteNav";
-import AboutNav from "./AboutNav";
+// import SiteNav from "../SiteNav";
+// import AboutNav from "./AboutNav";
 
 export default function AboutMe() {
   return (
     <div>
       <div>
-        <SiteNav />
-        <AboutNav />
+        {/* <SiteNav /> */}
+        {/* <AboutNav /> */}
       </div>
-      <h2>About Me</h2>
       <div className="scrollable">
         <p>Hey there!</p>
         <p>

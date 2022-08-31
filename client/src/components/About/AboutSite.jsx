@@ -1,15 +1,14 @@
 import React from "react";
-import SiteNav from "../SiteNav";
-import AboutNav from "./AboutNav";
+// import SiteNav from "../SiteNav";
+// import AboutNav from "./AboutNav";
 
 export default function AboutSite() {
   return (
     <div>
       <div>
-        <SiteNav />
-        <AboutNav />
+        {/* <SiteNav /> */}
+        {/* <AboutNav /> */}
       </div>
-      <h2>About the Site</h2>
       <div className="scrollable">
         <p>
           Santi's Countries is a Web App made to show information about all
