@@ -13,21 +13,41 @@ export default function NavBar() {
       </NavLink>
 
       <div className={styles.nav_buttons}>
-        <NavLink to="/home">
-          <button className={styles.nav_button}>HOME</button>
-        </NavLink>
+        <div className={styles.nav_button}>
+          <NavLink
+            to="/home"
+            className={({ isActive }) =>
+              isActive ? styles.active : styles.nav_button
+            }
+          >
+            {" "}
+            HOME
+          </NavLink>
+        </div>
 
-        {/* <NavLink to="/activities">
-        <button>ACTIVITIES</button>
-      </NavLink> */}
+        <div className={styles.nav_button}>
+          <NavLink
+            to="/activities/create"
+            className={({ isActive }) =>
+              isActive ? styles.active : styles.nav_button
+            }
+          >
+            {" "}
+            CREATE ACTIVITY
+          </NavLink>
+        </div>
 
-        <NavLink to="/activities/create">
-          <button className={styles.nav_button}>CREATE ACTIVITY</button>
-        </NavLink>
-
-        <NavLink to="/about">
-          <button className={styles.nav_button}>ABOUT</button>
-        </NavLink>
+        <div className={styles.nav_button}>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive ? styles.active : styles.nav_button
+            }
+          >
+            {" "}
+            ABOUT
+          </NavLink>
+        </div>
       </div>
     </div>
   );

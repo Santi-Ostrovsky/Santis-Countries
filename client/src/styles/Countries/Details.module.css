@@ -1,5 +1,6 @@
 .container {
-  background: url(../../assets/img/Countries/jakob-braun-vpsPRd_rz-A-un3splash.jpg)
+  /* background: url(../../assets/img/Countries/jakob-braun-vpsPRd_rz-A-un3splash.jpg) */
+  background: url(../../assets/img/Countries/dariusz-sankowski-mj2NwYH3wBA-unsplash.jpg)
     no-repeat 50% 50% #10101099;
   background-size: 100%;
   object-fit: cover;
@@ -15,7 +16,7 @@
   margin: auto;
   margin-top: 1%;
   text-align: center;
-  background: #00000077;
+  background: #000000aa;
   backdrop-filter: blur(4px);
   width: 60%;
   height: 84vh;
@@ -38,18 +39,20 @@
   height: 80vh;
   border-right: 4px solid #ffffff55;
   font-size: 20px;
+  overflow: scroll;
 }
 
 .id_container,
 .map_container {
-  margin-left: 94.5%;
-  margin-top: -36.5%;
+  margin-left: 54.7%;
+  /* margin-top: -36.5%; */
+  z-index: 99999999999;
   position: absolute;
   text-align: center;
   background: #000;
   backdrop-filter: blur(4px);
-  width: 10%;
-  height: 8%;
+  width: 66px;
+  height: 65px;
   border: 4px solid #ffffff55;
   border-radius: 50px;
   box-shadow: 0px 0px 20px 0px #000000 inset;
@@ -57,9 +60,14 @@
   overflow: hidden;
 }
 
+.id_container {
+  height: 60px;
+  padding-top: 3px;
+}
+
 .map_container {
-  margin-top: -6%;
-  margin-left: 95%;
+  margin-top: 39%;
+  margin-left: 54.9%;
 }
 
 .map_container:hover {
@@ -198,4 +206,39 @@
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+/* ------------------ */
+
+.back_button {
+  position: absolute;
+  margin-top: 66.5%;
+  margin-left: -25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+}
+
+.back_inner_button {
+  background: #000000bb;
+  font-size: 25px;
+  width: 130%;
+  text-align: center;
+  text-shadow: 0px 0px 10px #000;
+  border: 2px solid #ffffff55;
+  border-radius: 40px;
+  padding: 5%;
+  margin-left: -12%;
+  border-radius: 40px;
+}
+
+.back_inner_button :hover {
+  color: #ffffffbb;
+  font-size: 40px;
+  text-shadow: 0px 0px 20px #000000;
+  border: 2px solid #ffffff55;
+  box-shadow: 0px 0px 20px 0px #ffffffbb;
+  transition: 0.3s;
+  z-index: 9999999999;
 }

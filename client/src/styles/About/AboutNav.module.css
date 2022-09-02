@@ -23,7 +23,10 @@
   margin: auto;
 }
 
-.active,
+.active {
+  color: #777;
+}
+
 button:hover {
   color: #888888ff;
   color: #000000;

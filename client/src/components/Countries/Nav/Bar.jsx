@@ -14,25 +14,37 @@ export default function Bar() {
 
   return (
     <div className={styles.bar}>
+      {/*  */}
       <div className={styles.filters}>
         <span className={styles.search_bar}>
           <SearchBar />
         </span>
       </div>
+
       <div className={styles.filters}>
-        <Filter />
+        <div className={styles.select}>
+          <Filter />
+        </div>
       </div>
+
       <div className={styles.filters}>
-        <OrderByAZ />
+        <div className={styles.select}>
+          <OrderByAZ />
+        </div>
       </div>
+
       <div className={styles.filters}>
-        <OrderByPopulation />
+        <div className={styles.select}>
+          <OrderByPopulation />
+        </div>
       </div>
+
       <span className={styles.clear_span}>
         <button className={styles.clear_button} onClick={handleClear}>
           CLEAR FILTERS
         </button>
       </span>
+      {/*  */}
     </div>
   );
 }

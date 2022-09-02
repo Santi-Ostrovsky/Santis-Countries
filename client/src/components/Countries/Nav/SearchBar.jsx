@@ -36,7 +36,7 @@ export default function SearchBar() {
         ></input>
       </label>
       <div className={styles.err_msg}>
-        <span className={state.error ? "error" : "noError"}>
+        <span className={state.error ? styles.error : styles.noError}>
           Country name can only contain letters and white spaces
         </span>
       </div>

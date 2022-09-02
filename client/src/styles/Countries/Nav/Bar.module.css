@@ -38,13 +38,23 @@ button:hover {
   transition: 0.3s;
 }
 
-select,
+.select,
 option {
   appearance: none;
   margin-top: 2%;
   margin-bottom: 20%;
   color: #000;
   width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  display: block;
+}
+
+select {
+  appearance: none;
+  width: 100%;
+  color: #000;
   text-align: center;
   font-weight: bold;
   font-size: 20px;

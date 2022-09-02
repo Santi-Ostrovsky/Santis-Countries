@@ -50,7 +50,7 @@ p {
 }
 
 .button {
-  --border-right: 6px;
+  /* --border-right: 6px; */
   --text-stroke-color: rgba(255, 255, 255, 0.8);
   --animation-color: #ffffff;
   --fs-size: 1.5em;

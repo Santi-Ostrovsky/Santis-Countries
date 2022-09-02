@@ -1,15 +1,21 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { orderAlphabetically } from "../../../redux/actions/countries";
+import { paging } from "../../../redux/actions/countries";
 
 export default function OrderByAZ() {
   const dispatch = useDispatch();
+
+  const handleOrder = (e) => {
+    dispatch(orderAlphabetically(e.target.value));
+    dispatch(paging(1));
+  };
 
   return (
     <div>
       <label>
         Order Alphabetically
-        <select onChange={(e) => dispatch(orderAlphabetically(e.target.value))}>
+        <select onChange={(e) => handleOrder(e)}>
           <option value="All">None</option>
           <option value="A → Z">A → Z</option>
           <option value="Z → A">Z → A</option>
