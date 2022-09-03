@@ -3,6 +3,7 @@ import {
   GET_ACTIVITIES,
   GET_ACTIVITY_DETAILS,
   CREATE_ACTIVITY,
+  DELETE_ACTIVITY,
 } from "./actionTypes";
 
 const PATH = "http://localhost:3001/activities/";
@@ -53,4 +54,17 @@ export const createActivity = (activity) => {
   };
 };
 
-// CLEAR FILTERS
+// DELETE ACTIVITY
+export const deleteActivity = (id) => {
+  return async function (dispatch) {
+    try {
+      const activity = await axios.delete(`${PATH}${id}`, id);
+      return dispatch({
+        type: DELETE_ACTIVITY,
+        payload: activity,
+      });
+    } catch (e) {
+      console.error(`${ERROR}deleteActivities --> ${e}`);
+    }
+  };
+};

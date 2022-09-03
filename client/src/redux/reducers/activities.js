@@ -2,6 +2,7 @@ import {
   GET_ACTIVITIES,
   GET_ACTIVITY_DETAILS,
   CREATE_ACTIVITY,
+  DELETE_ACTIVITY,
 } from "../actions/actionTypes";
 import { initialState as countries } from "./countries";
 
@@ -28,6 +29,11 @@ export default function activities(state = initialState, action) {
       return {
         ...state,
         activities: [...state.activities, payload],
+      };
+    case DELETE_ACTIVITY:
+      return {
+        ...state,
+        activities: state.activities.filter((a) => a.id !== payload),
       };
     default:
       return { ...state };

@@ -36,5 +36,3 @@ export default function FilterByActivity({ setFilterCountries }) {
     </div>
   );
 }
-
-// BOTÓN PARA ELIMINAR ACTIVIDADES con resultado = a handleChange.
