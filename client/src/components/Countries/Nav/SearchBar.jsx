@@ -23,18 +23,19 @@ export default function SearchBar() {
 
   return (
     <div>
-      <label>
-        Search Countries by Name
-        <input
-          type="search"
-          name="country"
-          placeholder="ex: Argentina"
-          onChange={(e) => handleChange(e)}
-          value={state.search}
-          className={styles.search_bar}
-          autoComplete="off"
-        ></input>
-      </label>
+      <form>
+        <label>
+          Search Countries by Name
+          <input
+            type="search"
+            name="country"
+            placeholder="ex: Argentina"
+            onChange={(e) => handleChange(e)}
+            className={`searchBar ${styles.search_bar}`}
+            autoComplete="off"
+          ></input>
+        </label>
+      </form>
       <div className={styles.err_msg}>
         <span className={state.error ? styles.error : styles.noError}>
           Country name can only contain letters and white spaces

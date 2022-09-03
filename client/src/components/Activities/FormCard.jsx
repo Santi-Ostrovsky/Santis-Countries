@@ -12,13 +12,14 @@ export default function FormCard(props) {
   };
 
   return (
-    <div className={styles.card}>
-      <div className={styles.close_container}></div>
-      <button onClick={handleClick}>❌</button>
-      <img src={flag} alt={`${name}'s flag`} className={styles.flag} />
-      <div className={styles.captions}>
+    <>
+      <div className={styles.remove_button}>
+        <button onClick={handleClick}>❌</button>
+      </div>
+      <div className={styles.card}>
+        <img src={flag} alt={`${name}'s flag`} className={styles.flag} />
         <div className={styles.name}>{name}</div>
       </div>
-    </div>
+    </>
   );
 }

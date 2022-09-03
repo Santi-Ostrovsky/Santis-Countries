@@ -22,7 +22,7 @@ export default function FilterByActivity({ setFilterCountries }) {
     <div>
       <label>
         Filter By Activity
-        <select onChange={(e) => handleChange(e)}>
+        <select id="activity" onChange={(e) => handleChange(e)}>
           <option value="All">All</option>
           {activities?.map((a, i) => {
             return (
@@ -36,3 +36,5 @@ export default function FilterByActivity({ setFilterCountries }) {
     </div>
   );
 }
+
+// BOTÓN PARA ELIMINAR ACTIVIDADES con resultado = a handleChange.

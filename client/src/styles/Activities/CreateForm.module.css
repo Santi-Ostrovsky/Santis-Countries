@@ -54,11 +54,17 @@
 }
 
 .form_field {
-  padding-bottom: 8%;
+  padding-bottom: 16%;
+}
+
+.difficulty_field,
+.duration_field {
+  padding-bottom: 8.5%;
 }
 
 .search_bar {
   margin-top: 2%;
+  margin-bottom: 0.3%;
   background-color: #ddd0;
   border-width: 0 0 2px 0;
   color: #ffffffcc;
@@ -91,6 +97,8 @@ select {
 }
 
 .err_msg {
+  width: 200%;
+  margin: auto;
   margin-top: -2%;
   margin-bottom: 4%;
   position: absolute;
@@ -98,50 +106,59 @@ select {
 }
 
 .error {
+  margin: auto;
+  width: 40%;
+  margin-left: -4%;
+  margin-top: 1%;
   color: #f00;
   text-shadow: 0px 0px 20px #000000;
+  font-weight: bold;
+  position: absolute;
 }
 
 .noError {
+  margin: auto;
   color: #0000;
+  position: absolute;
 }
 
 .cards_container {
   position: absolute;
   float: right;
-  margin: 1%;
-  margin-right: 1%;
-  margin-left: 100%;
-  margin-top: 1%;
+  /* margin: 1%; */
+  margin-left: 99.5%;
+  /* margin-top: 1%; */
   width: 30%;
+  min-height: 83%;
+  /* border: 2px solid red; */
   height: 80%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: flex-start;
   align-items: flex-start;
   text-align: center;
-  justify-content: flex-start;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
   overflow: scroll;
 }
 
-._card {
+.card {
   background: #00000077;
   backdrop-filter: blur(4px);
   top: 0;
   margin: 10px;
-  width: 350px;
-  height: 150px;
+  width: 40%;
+  height: 25%;
   border: 4px solid #ffffff55;
   border-radius: 40px;
   box-shadow: 0px 0px 20px 0px #000000 inset;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   text-align: center;
-  justify-content: space-evenly;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .footer {

@@ -8,6 +8,7 @@ export default function OrderByPopulation() {
 
   const handleOrder = (e) => {
     dispatch(orderByPopulation(e.target.value));
+    document.getElementById("az").selectedIndex = 0;
     dispatch(paging(1));
   };
 
@@ -15,10 +16,14 @@ export default function OrderByPopulation() {
     <div>
       <label>
         Order By Population
-        <select onChange={(e) => handleOrder(e)} defaultValue={"All"}>
+        <select
+          id="population"
+          onChange={(e) => handleOrder(e)}
+          defaultValue={"All"}
+        >
           <option value="All">None</option>
-          <option value="HIGHER">Higher</option>
-          <option value="LOWER">Lower</option>
+          <option value="HIGHER">Low → High</option>
+          <option value="LOWER">High → Low</option>
         </select>
       </label>
     </div>

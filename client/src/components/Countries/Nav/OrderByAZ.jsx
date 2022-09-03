@@ -8,6 +8,7 @@ export default function OrderByAZ() {
 
   const handleOrder = (e) => {
     dispatch(orderAlphabetically(e.target.value));
+    document.getElementById("population").selectedIndex = 0;
     dispatch(paging(1));
   };
 
@@ -15,7 +16,7 @@ export default function OrderByAZ() {
     <div>
       <label>
         Order Alphabetically
-        <select onChange={(e) => handleOrder(e)}>
+        <select id="az" onChange={(e) => handleOrder(e)}>
           <option value="All">None</option>
           <option value="A → Z">A → Z</option>
           <option value="Z → A">Z → A</option>

@@ -24,7 +24,7 @@ export default function FilterByContinent({ setFilterCountries }) {
     <div>
       <label>
         Filter By Continent
-        <select onChange={(e) => handleChange(e)}>
+        <select id="continent" onChange={(e) => handleChange(e)}>
           <option value="All">All</option>
           {continents.map((c, i) => {
             return (

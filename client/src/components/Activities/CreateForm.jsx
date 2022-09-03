@@ -91,23 +91,27 @@ export default function CreateForm() {
     }
   };
 
-  //   const handleReset = () => {
-  //     setFields({
-  //       name: "",
-  //       difficulty: null,
-  //       duration: null,
-  //       season: null,
-  //       //   picture: "",
-  //       countries: null,
-  //     });
-  //   };
+  const handleClear = () => {
+    setFields({
+      name: "",
+      difficulty: "1",
+      duration: "1",
+      season: "",
+      //   picture: "",
+      countries: [],
+    });
+    document.getElementById("difficulty").value = 0;
+    document.getElementById("duration").value = 0;
+    document.getElementById("season").selectedIndex = 0;
+    document.getElementById("countries").selectedIndex = 0;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (fields.name !== "" && fields.season !== "") {
       fields.name = format(fields.name);
       dispatch(createActivity(fields));
-      //   handleReset();
+      handleClear();
       alert(`Activity "${fields.name}" successfully created!`);
       navigate(`/home`);
       //
@@ -143,7 +147,7 @@ export default function CreateForm() {
                     value={fields.name}
                     placeholder="ex: Hiking"
                     onChange={(e) => handleName(e)}
-                    className={styles.search_bar}
+                    className={`searchBar ${styles.search_bar}`}
                   ></input>
                 </label>
                 <div className={styles.error_msg}>
@@ -161,10 +165,11 @@ export default function CreateForm() {
                 </div>
               </div>
 
-              <div className={styles.form_field}>
+              <div className={styles.difficulty_field}>
                 <label className={styles.difficulty}>
                   Difficulty
                   <input
+                    id="difficulty"
                     type="range"
                     defaultValue={"1"}
                     min={1}
@@ -188,10 +193,11 @@ export default function CreateForm() {
                 </div>
               </div>
 
-              <div className={styles.form_field}>
+              <div className={styles.duration_field}>
                 <label className={styles.duration}>
                   Duration
                   <input
+                    id="duration"
                     type="range"
                     defaultValue={"1"}
                     min={1}
@@ -211,7 +217,11 @@ export default function CreateForm() {
               <div className={styles.form_field}>
                 <label className={styles.season}>
                   Season
-                  <select onChange={(e) => handleSeason(e)} required>
+                  <select
+                    id="season"
+                    onChange={(e) => handleSeason(e)}
+                    required
+                  >
                     <option>Select Season</option>
                     {seasons.map((s, i) => {
                       return (
@@ -243,7 +253,11 @@ export default function CreateForm() {
               <div>
                 <label className={styles.countries}>
                   Countries
-                  <select onChange={(e) => handleCountries(e)} required>
+                  <select
+                    id="countries"
+                    onChange={(e) => handleCountries(e)}
+                    required
+                  >
                     <option>Select Countries</option>
                     {allCountries
                       ?.sort((a, b) => (a.name < b.name ? -1 : 1))
@@ -272,36 +286,34 @@ export default function CreateForm() {
           </button> */}
                 <button
                   type="button"
-                  onClick={() => window.location.reload(false)}
+                  onClick={handleClear}
                   className={styles.reset}
                 >
-                  RESET
+                  CLEAR
                 </button>
                 <button type="submit" className={styles.create}>
-                  CREATE
+                  SUBMIT
                 </button>
               </div>
             </form>
 
             <div className={styles.cards_container}>
-              <div>
-                {allCountries
-                  ?.filter((c) => fields.countries.includes(c.id))
-                  .map((c) => {
-                    return (
-                      <div className={styles.card}>
-                        <FormCard
-                          key={c.id}
-                          id={c.id}
-                          name={c.name}
-                          flag={c.flag}
-                          state={fields}
-                          setState={setFields}
-                        />
-                      </div>
-                    );
-                  })}
-              </div>
+              {allCountries
+                ?.filter((c) => fields.countries.includes(c.id))
+                .map((c) => {
+                  return (
+                    <div className={styles.card}>
+                      <FormCard
+                        key={c.id}
+                        id={c.id}
+                        name={c.name}
+                        flag={c.flag}
+                        state={fields}
+                        setState={setFields}
+                      />
+                    </div>
+                  );
+                })}
               {/*  */}
             </div>
           </div>
