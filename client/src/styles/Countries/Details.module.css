@@ -197,8 +197,10 @@
   justify-content: space-evenly;
 }
 
-.name {
-  font-size: 40px;
+.activityName {
+  font-size: 22px;
+  font-weight: bold;
+  overflow: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -207,10 +209,29 @@
 
 /* ------------------ */
 
+.remove_button {
+  position: absolute;
+  z-index: 9999999999999;
+  margin-top: -40%;
+  margin-right: -95%;
+  width: 8%;
+  height: 18%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff55;
+  background-color: #000;
+  backdrop-filter: blur(4px);
+  border-radius: 50px;
+}
+
+/* ------------------ */
+
 .back_button {
   position: absolute;
   margin-top: 66.5%;
   margin-left: -25%;
+  width: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -230,12 +251,13 @@
   border-radius: 40px;
 }
 
+.back_button :hover,
 .back_inner_button :hover {
   color: #ffffffbb;
-  font-size: 40px;
+  /* font-size: 40px; */
   text-shadow: 0px 0px 20px #000000;
   border: 2px solid #ffffff55;
-  box-shadow: 0px 0px 20px 0px #ffffffbb;
+  box-shadow: 0px 0px 10px 0px #ffffffbb;
   transition: 0.5s;
   z-index: 9999999999;
 }

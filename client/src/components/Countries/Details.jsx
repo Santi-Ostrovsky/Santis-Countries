@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getCountryDetails } from "../../redux/actions/countries";
 import { deleteActivity } from "../../redux/actions/activities";
-import { Link } from "react-router-dom";
 import styles from "../../styles/Countries/Details.module.css";
 
 export default function Details() {
@@ -183,7 +182,7 @@ export default function Details() {
                       ❌
                     </button>
                   </div>
-                  <div className={styles.name}>{a.name}</div>
+                  <div className={styles.activityName}>{a.name}</div>
                   <div className={styles.line}>
                     {a.difficulty === 1
                       ? "Difficulty: Beginner"
@@ -208,9 +207,12 @@ export default function Details() {
         </div>
 
         <div className={styles.back_button}>
-          <Link to="/home">
-            <button className={styles.back_inner_button}>← Back to Home</button>
-          </Link>
+          <button
+            className={styles.back_inner_button}
+            onClick={() => window.history.go(-1)}
+          >
+            ← Go Back
+          </button>
           {/*  */}
         </div>
       </div>

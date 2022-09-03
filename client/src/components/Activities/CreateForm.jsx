@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { Prompt } from "react-router";
 import { useNavigate } from "react-router-dom";
 import { createActivity } from "../../redux/actions/activities";
 import { showCountries } from "../../redux/actions/countries";
@@ -23,7 +22,6 @@ export default function CreateForm() {
   });
 
   const [fields, setFields] = useState({
-    // name: window.localStorage.getItem("name"),
     name: "",
     difficulty: "1",
     duration: "1",
@@ -31,15 +29,6 @@ export default function CreateForm() {
     // picture: "",
     countries: [],
   });
-
-  const setLocalName = (value) => {
-    try {
-      setFields(fields[value]);
-      window.localStorage.setItem("name", value);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const format = (str) => {
     // return str.trim()[0].toUpperCase() + str.trim().slice(1).toLowerCase();
@@ -57,22 +46,21 @@ export default function CreateForm() {
 
   const handleName = (e) => {
     if (/^[a-z\s]*$/gi.test(e.target.value)) {
-      setError({ ...error, error: false, noName: false });
+      if (fields.name.length <= 30)
+        setError({ ...error, error: false, noName: false });
       setFields({ ...fields, name: e.target.value });
-    } else {
-      setError({ ...error, error: true });
-    }
+    } else setError({ ...error, error: true });
+
+    setError({ ...error, noName: fields.name.length > 30 ? true : false });
   };
 
   const handleSeason = (e) => {
     if (e.target.value !== "Select Season") {
       setFields({ ...fields, season: e.target.value });
       setError({ ...error, noSeason: false });
-      //   seasonOK = true;
     } else {
       setFields({ ...fields, season: "" });
       setError({ ...error, noSeason: true });
-      //   seasonOK = false;
     }
   };
 
@@ -85,16 +73,10 @@ export default function CreateForm() {
           countries: [...fields.countries, e.target.value],
         });
       } else {
-        let filtrados = allCountries.filter((c) =>
-          fields.countries.includes(c.id)
-        );
-        let nombres = filtrados.map((ele) => ele.name);
-        console.log(nombres);
-        // alert(
-        //   `${
-        //     allCountries.filter((c) => fields.countries.includes(c.id))[0].name
-        //   } has already been selected.`
-        // );
+        let country = allCountries
+          .filter((c) => c.id === e.target.value)
+          .map((c) => c.name);
+        alert(`${country} has already been selected.`);
       }
     }
   };
@@ -116,7 +98,8 @@ export default function CreateForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (fields.name.length >= 3 && fields.season !== "") {
+    let nameLen = fields.name.length;
+    if (nameLen >= 3 && nameLen <= 30 && fields.season !== "") {
       fields.name = format(fields.name);
       dispatch(createActivity(fields));
       handleClear();
@@ -126,7 +109,7 @@ export default function CreateForm() {
     } else {
       setError({
         ...error,
-        noName: fields.name.length >= 3 ? false : true,
+        noName: nameLen >= 3 && nameLen <= 30 ? false : true,
         noSeason: fields.season ? false : true,
         noCountries: fields.countries.length ? false : true,
       });
@@ -163,7 +146,7 @@ export default function CreateForm() {
                 <div className={styles.error_msg}>
                   {error.noName && (
                     <div className={styles.error}>
-                      Activity name must contain at least 3 characters
+                      Activity name must contain between 3 and 30 characters
                     </div>
                   )}
                   {error.error && (
@@ -302,7 +285,7 @@ export default function CreateForm() {
                 ?.filter((c) => fields.countries.includes(c.id))
                 .map((c) => {
                   return (
-                    <div className={styles.card}>
+                    <div key={c.id} className={styles.card}>
                       <FormCard
                         key={c.id}
                         id={c.id}
