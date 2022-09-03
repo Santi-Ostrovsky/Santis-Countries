@@ -20,9 +20,9 @@ export default function CreateForm() {
 
   const [error, setError] = useState({
     error: false,
-    noName: null,
-    noSeason: null,
-    noCountries: null,
+    // noName: null,
+    // noSeason: null,
+    // noCountries: null,
   });
   const [fields, setFields] = useState({
     name: "",
@@ -62,9 +62,11 @@ export default function CreateForm() {
     if (e.target.value !== "Select Season") {
       setFields({ ...fields, season: e.target.value });
       setError({ ...error, noSeason: false });
+      //   seasonOK = true;
     } else {
       setFields({ ...fields, season: "" });
       setError({ ...error, noSeason: true });
+      //   seasonOK = false;
     }
   };
 
@@ -108,7 +110,7 @@ export default function CreateForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (fields.name !== "" && fields.season !== "") {
+    if (fields.name.length >= 3 && fields.season !== "") {
       fields.name = format(fields.name);
       dispatch(createActivity(fields));
       handleClear();
@@ -116,10 +118,12 @@ export default function CreateForm() {
       navigate(`/home`);
       //
     } else {
-      if (fields.name === "") setError({ ...error, noName: true });
-      if (fields.season === "" || fields.season === "Select Season")
-        setError({ ...error, noSeason: true });
-      if (!fields.countries.length) setError({ ...error, noCountries: true });
+      setError({
+        ...error,
+        noName: fields.name.length >= 3 ? false : true,
+        noSeason: fields.season ? false : true,
+        noCountries: fields.countries.length ? false : true,
+      });
     }
   };
 
@@ -151,17 +155,16 @@ export default function CreateForm() {
                   ></input>
                 </label>
                 <div className={styles.error_msg}>
-                  <div
-                    className={
-                      error.error || error.noName
-                        ? styles.error
-                        : styles.noError
-                    }
-                  >
-                    {error.error
-                      ? "Activity name can only contain letters and white spaces"
-                      : "Activity name can not be empty"}
-                  </div>
+                  {error.noName && (
+                    <div className={styles.error}>
+                      Activity name must contain at least 3 characters
+                    </div>
+                  )}
+                  {error.error && (
+                    <div className={styles.error}>
+                      Activity name can only contain letters and white spaces
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -232,13 +235,9 @@ export default function CreateForm() {
                     })}
                   </select>
                 </label>
-                <div
-                  className={
-                    error.error || error.noName ? styles.error : styles.noError
-                  }
-                >
-                  Please, select a season
-                </div>
+                {error.noSeason && (
+                  <div className={styles.error}>Please, select a season</div>
+                )}
               </div>
 
               {/* <label>
@@ -271,19 +270,14 @@ export default function CreateForm() {
                   </select>
                 </label>
 
-                <div
-                  className={
-                    error.error || error.noName ? styles.error : styles.noError
-                  }
-                >
-                  Please, select at least one country
-                </div>
+                {error.noCountries && (
+                  <div className={styles.error}>
+                    Please, select at least one country
+                  </div>
+                )}
               </div>
 
               <div className={styles.footer}>
-                {/* <button type="button" onClick={handleReset}>
-            Reset
-          </button> */}
                 <button
                   type="button"
                   onClick={handleClear}

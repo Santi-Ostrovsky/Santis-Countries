@@ -70,8 +70,9 @@
   margin-left: 54.9%;
 }
 
-.map_container:hover {
+.map_container :hover {
   box-shadow: 0px 0px 10px 0px #ffffff;
+  transition: 0.5s;
 }
 
 .id {
@@ -239,6 +240,6 @@
   text-shadow: 0px 0px 20px #000000;
   border: 2px solid #ffffff55;
   box-shadow: 0px 0px 20px 0px #ffffffbb;
-  transition: 0.3s;
+  transition: 0.5s;
   z-index: 9999999999;
 }

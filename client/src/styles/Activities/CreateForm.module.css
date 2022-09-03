@@ -44,7 +44,6 @@
   padding-left: 10%;
   padding-right: 10%;
   border-right: 4px solid #ffffff55;
-  /* border: 4px solid red; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -125,19 +124,15 @@ select {
 .cards_container {
   position: absolute;
   float: right;
-  /* margin: 1%; */
   margin-left: 99.5%;
-  /* margin-top: 1%; */
   width: 30%;
   min-height: 83%;
-  /* border: 2px solid red; */
   height: 80%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-items: flex-start;
-  text-align: center;
+  align-content: flex-start;
   font-size: 22px;
   font-weight: bold;
   overflow: scroll;
@@ -158,7 +153,6 @@ select {
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
-  /* overflow: hidden; */
 }
 
 .footer {
@@ -183,7 +177,7 @@ select {
 .create:hover {
   color: #000000;
   text-shadow: 0px 0px 10px #ffffff;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
 button {

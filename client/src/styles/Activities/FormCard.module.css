@@ -32,6 +32,7 @@
 
 .flag {
   position: absolute;
+  border-bottom: 2px solid #ffffff55;
   top: 0;
   height: 60%;
   width: 100%;

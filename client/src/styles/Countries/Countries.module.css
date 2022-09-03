@@ -40,12 +40,11 @@
 
 .cards:hover {
   z-index: 1000000;
-  /* border: 2px solid #ffffff55; */
   border-radius: 40px;
   box-shadow: 5px 5px 20px 0px #ffffffff inset;
   outline: none;
   transition: border-radius 0s;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
 .cards:focus,

@@ -66,6 +66,6 @@
   text-shadow: 0px 0px 20px #000000;
   border: 2px solid #ffffff55;
   box-shadow: 0px 0px 20px 0px #ffffffbb;
-  transition: 0.3s;
+  transition: 0.5s;
   z-index: 9999999999;
 }
