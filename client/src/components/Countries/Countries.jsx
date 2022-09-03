@@ -28,9 +28,6 @@ export default function Countries() {
   const firstIndex = lastIndex - 10;
   const countriesInPage = allCountries?.slice(firstIndex, lastIndex);
 
-  //   return loaded ? (
-  //     <Loader />
-  //   ) :
   return (
     <div className={styles.container}>
       <SiteNav />

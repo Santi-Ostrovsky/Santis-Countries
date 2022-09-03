@@ -13,10 +13,18 @@ export default function SearchBar() {
     error: false,
   });
 
+  const handleClear = () => {
+    document.getElementById("continent").selectedIndex = 0;
+    document.getElementById("activity").selectedIndex = 0;
+    document.getElementById("az").selectedIndex = 0;
+    document.getElementById("population").selectedIndex = 0;
+  };
+
   const handleChange = (e) => {
     if (/^[a-z\s]*$/gi.test(e.target.value)) {
       setState({ search: e.target.value, error: false });
       dispatch(getCountryName(e.target.value));
+      handleClear();
       dispatch(paging(1));
     } else setState({ ...state, error: true });
   };
