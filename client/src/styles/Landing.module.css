@@ -1,6 +1,6 @@
 .container {
-  background: url(../assets/img/Landing/dariusz-sankowski-3OiYMgDKJ6k-unsplash.jpg)
-    no-repeat 50% 50% #10101099;
+  background: url(../assets/img/Compressed/landing.jpg) no-repeat 50% 50%
+    #10101099;
   background-size: 100%;
   object-fit: cover;
   z-index: 0;

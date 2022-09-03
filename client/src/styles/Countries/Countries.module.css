@@ -1,7 +1,6 @@
 .container {
-  /* background: url(../../assets/img/Countries/dariusz-sankowski-mj2NwYH3wBA-unsplash.jpg) */
-  background: url(../../assets/img/Countries/jakob-braun-vpsPRd_rz-A-un3splash.jpg)
-    no-repeat 50% 50% #10101099;
+  background: url(../../assets/img/Compressed/countries.jpg) no-repeat 50% 50%
+    #10101099;
   background-size: 100%;
   object-fit: cover;
   z-index: 0;
@@ -15,11 +14,11 @@
 .cards_container {
   align-items: center;
   justify-content: center;
-  width: 70%;
+  width: 72.5%;
   height: 72%;
   margin: 1%;
-  padding: 1%;
-  padding-left: 4.5%;
+  /* padding: 1%; */
+  padding-left: 3%;
   padding-right: -2%;
   backdrop-filter: blur(2px);
   border: 4px solid #000000bb;

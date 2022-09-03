@@ -1,6 +1,6 @@
 .container {
-  background: url(../assets/img/Error404/chris-lawton-KpaBXAOs80YI-unsplash.jpg)
-    no-repeat 50% 50% #10101099;
+  background: url(../assets/img/Compressed/error404.jpg) no-repeat 50% 50%
+    #10101099;
   background-size: 100%;
   object-fit: cover;
   z-index: 0;

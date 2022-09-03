@@ -6,7 +6,7 @@ import Activities from "./components/Activities/Activities";
 import ActivityDetails from "./components/Activities/ActivityDetails";
 import CreateForm from "./components/Activities/CreateForm";
 import About from "../src/components/About/About";
-// import Loader from "../src/components/Loader";
+import Loader from "../src/components/Loader";
 import Error404 from "./components/Error404";
 import "./styles/App.css";
 
@@ -30,7 +30,7 @@ function App() {
         element={<CreateForm />}
       ></Route>
       <Route exact strict path="/about" element={<About />}></Route>
-      {/* <Route exact strict path="/loader" element={<Loader />}></Route> */}
+      <Route exact strict path="/loader" element={<Loader />}></Route>
       <Route path="*" element={<Error404 />}></Route>
     </Routes>
   );

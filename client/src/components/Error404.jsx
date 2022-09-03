@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styles from "../styles/Error404.module.css";
 
 export default function Error404() {
@@ -14,9 +13,12 @@ export default function Error404() {
         </div>
       </div>
       <div className={styles.button}>
-        <Link to="/home">
-          <button className={styles.inner_button}>← Back to Home</button>
-        </Link>
+        <button
+          className={styles.inner_button}
+          onClick={() => window.history.go(-1)}
+        >
+          ← Go Back
+        </button>
       </div>
     </div>
   );

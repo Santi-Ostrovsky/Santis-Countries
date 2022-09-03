@@ -1,7 +1,6 @@
 .container {
-  /* background: url(../../assets/img/Countries/jakob-braun-vpsPRd_rz-A-un3splash.jpg) */
-  background: url(../../assets/img/Countries/dariusz-sankowski-mj2NwYH3wBA-unsplash.jpg)
-    no-repeat 50% 50% #10101099;
+  background: url(../../assets/img/Compressed/details.jpg) no-repeat 50% 50%
+    #10101099;
   background-size: 100%;
   object-fit: cover;
   z-index: 0;
@@ -43,7 +42,7 @@
 
 .id_container,
 .map_container {
-  margin-left: 54.7%;
+  margin-left: 54.75%;
   z-index: 99;
   position: absolute;
   text-align: center;
