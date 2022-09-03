@@ -6,7 +6,7 @@ import {
   DELETE_ACTIVITY,
 } from "./actionTypes";
 
-const PATH = "http://localhost:3001/activities/";
+const PATH = "/activities/";
 const ERROR = `Error @ actions/`;
 
 // GET /activities

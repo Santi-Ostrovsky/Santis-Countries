@@ -11,7 +11,7 @@ import {
   //   LOAD,
 } from "./actionTypes";
 
-const PATH = "http://localhost:3001/countries/";
+const PATH = "/countries/";
 const ERROR = `Error @ actions/`;
 
 // GET /countries
