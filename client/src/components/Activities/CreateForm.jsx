@@ -20,11 +20,10 @@ export default function CreateForm() {
 
   const [error, setError] = useState({
     error: false,
-    // noName: null,
-    // noSeason: null,
-    // noCountries: null,
   });
+
   const [fields, setFields] = useState({
+    // name: window.localStorage.getItem("name"),
     name: "",
     difficulty: "1",
     duration: "1",
@@ -32,6 +31,15 @@ export default function CreateForm() {
     // picture: "",
     countries: [],
   });
+
+  const setLocalName = (value) => {
+    try {
+      setFields(fields[value]);
+      window.localStorage.setItem("name", value);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const format = (str) => {
     // return str.trim()[0].toUpperCase() + str.trim().slice(1).toLowerCase();
@@ -42,8 +50,6 @@ export default function CreateForm() {
       .map((word) => word[0].toUpperCase() + word.slice(1))
       .join(" ");
   };
-
-  // Prevent user from leaving with unsaved data
 
   // ----------------
   // HANDLERS

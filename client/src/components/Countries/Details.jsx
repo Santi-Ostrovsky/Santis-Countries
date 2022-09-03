@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getCountryDetails } from "../../redux/actions/countries";
+import { deleteActivity } from "../../redux/actions/activities";
 import { Link } from "react-router-dom";
 import styles from "../../styles/Countries/Details.module.css";
 
@@ -15,6 +16,7 @@ export default function Details() {
   useEffect(() => {
     dispatch(getCountryDetails(id));
   }, [dispatch, id]);
+
   const {
     name,
     flag,
@@ -169,17 +171,29 @@ export default function Details() {
             {activities?.map((a) => {
               return (
                 <div key={a.id} className={styles.activity_card}>
+                  <div className={styles.remove_button}>
+                    <button
+                      onClick={() =>
+                        dispatch(
+                          deleteActivity(a.id),
+                          window.location.reload(false)
+                        )
+                      }
+                    >
+                      ❌
+                    </button>
+                  </div>
                   <div className={styles.name}>{a.name}</div>
                   <div className={styles.line}>
                     {a.difficulty === 1
-                      ? "Beginner"
+                      ? "Difficulty: Beginner"
                       : a.difficulty === 2
-                      ? "Amateur"
+                      ? "Difficulty: Amateur"
                       : a.difficulty === 3
-                      ? "Intermediate"
+                      ? "Difficulty: Intermediate"
                       : a.difficulty === 4
-                      ? "Advanced"
-                      : "Expert"}
+                      ? "Difficulty: Advanced"
+                      : "Difficulty: Expert"}
                   </div>
                   <div className={styles.line}>Duration: {a.duration} hs.</div>
                   <div className={styles.line}>

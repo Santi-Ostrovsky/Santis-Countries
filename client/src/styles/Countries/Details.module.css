@@ -25,7 +25,6 @@
   box-shadow: 0px 0px 20px 0px #000000 inset;
   font-size: 20px;
   text-shadow: 0px 0px 20px #000000;
-  /* overflow: hidden; */
 }
 
 .details_container {
@@ -45,8 +44,7 @@
 .id_container,
 .map_container {
   margin-left: 54.7%;
-  /* margin-top: -36.5%; */
-  z-index: 99999999999;
+  z-index: 99;
   position: absolute;
   text-align: center;
   background: #000;
@@ -169,9 +167,8 @@
   height: 88%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  text-align: center;
-  justify-content: space-evenly;
   font-size: 20px;
   overflow: scroll;
 }
@@ -198,7 +195,6 @@
   align-items: center;
   text-align: center;
   justify-content: space-evenly;
-  overflow: hidden;
 }
 
 .name {
