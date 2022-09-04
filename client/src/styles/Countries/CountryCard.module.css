@@ -22,6 +22,7 @@
   height: 60%;
   width: 100%;
   object-fit: cover;
+  border-bottom: 1px solid #fff4;
 }
 
 .captions {
