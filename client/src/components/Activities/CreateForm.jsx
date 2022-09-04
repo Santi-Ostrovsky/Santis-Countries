@@ -45,18 +45,15 @@ export default function CreateForm() {
   // ----------------
 
   const handleName = (e) => {
-    // const backspace = e.keyCode === 8;
-    // const del = e.keyCode === 46;
     if (/^[a-z\s]*$/gi.test(e.target.value)) {
-      if (fields.name.length <= 30)
-        setError({ ...error, error: false, noName: false });
-      else
-        setError({ ...error, noName: fields.name.length >= 30 ? true : false });
-
+      setError({
+        ...error,
+        error: false,
+        noName: false,
+      });
       setFields({ ...fields, name: e.target.value });
     } //
     else setError({ ...error, error: true });
-    console.log(fields.name.length);
   };
 
   const handleSeason = (e) => {
@@ -146,12 +143,13 @@ export default function CreateForm() {
                 <label className={styles.activity_name}>
                   <span className={styles.name}>Activity Name</span>
                   <input
-                    type="text"
+                    type="search"
                     value={fields.name}
                     placeholder="ex: Hiking"
                     maxLength={30}
                     onChange={(e) => handleName(e)}
                     className={`searchBar ${styles.search_bar}`}
+                    autoComplete="off"
                   ></input>
                 </label>
                 <div className={styles.error_msg}>

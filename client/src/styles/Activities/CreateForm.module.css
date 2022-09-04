@@ -13,7 +13,7 @@
 .form_container {
   margin: auto;
   margin-top: 1%;
-  background: #000000aa;
+  background: #000000cc;
   backdrop-filter: blur(4px);
   width: 60%;
   height: 84%;
@@ -84,6 +84,7 @@ label {
 
 .name {
   text-decoration: underline;
+  margin-left: -1%;
 }
 
 input {
