@@ -165,6 +165,7 @@ export default function AboutMe() {
             rel="noreferrer"
             target="_blank"
             referencepolicy="no-referrer-when-downgrade"
+            className={styles.link}
           >
             Join my Discord Community Server!
             <div className={styles.svg_container}>

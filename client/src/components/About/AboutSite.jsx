@@ -431,6 +431,7 @@ export default function AboutSite() {
             rel="noreferrer"
             target="_blank"
             referencepolicy="no-referrer-when-downgrade"
+            className={styles.link}
           >
             Visit the GitHub Repository!
             <div className={styles.svg_container}>

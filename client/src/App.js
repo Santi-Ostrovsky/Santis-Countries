@@ -16,13 +16,13 @@ function App() {
       <Route exact strict path="/" element={<Landing />}></Route>
       <Route exact strict path="/home" element={<Countries />}></Route>
       <Route exact strict path="/countries/:id" element={<Details />}></Route>
-      <Route exact strict path="/activities" element={<Activities />}></Route>
-      <Route
+      {/* <Route exact strict path="/activities" element={<Activities />}></Route> */}
+      {/* <Route
         exact
         strict
         path="/activities/:id"
         element={<ActivityDetails />}
-      ></Route>
+      ></Route> */}
       <Route
         exact
         strict
