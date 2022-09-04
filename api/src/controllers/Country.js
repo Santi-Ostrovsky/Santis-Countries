@@ -10,7 +10,6 @@ const ERROR = "Error @ controllers/";
 const getCountries = async () => {
   try {
     let api = (await axios.get(`${PATH}all`)).data;
-    // console.log(api);
     // map api properties to create countries table rows
     api = await api?.map((c) =>
       Country.findOrCreate({
@@ -29,7 +28,6 @@ const getCountries = async () => {
           officialName: c.name.official ? c.name.official : c.name.common, // this.name,
           region: c.region,
           unMember: c.unMember,
-          // currencies: c.currencies[Object.keys(c.currencies)[0]].name,
           maps: `https://www.google.com/maps/place/${c.name.common}`,
           timezones: c.timezones[0],
         },

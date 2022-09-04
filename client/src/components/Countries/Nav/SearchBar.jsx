@@ -37,6 +37,7 @@ export default function SearchBar() {
           <input
             type="search"
             name="country"
+            value={state.search}
             placeholder="ex: Argentina"
             onChange={(e) => handleChange(e)}
             className={`searchBar ${styles.search_bar}`}

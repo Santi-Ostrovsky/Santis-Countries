@@ -45,13 +45,18 @@ export default function CreateForm() {
   // ----------------
 
   const handleName = (e) => {
+    // const backspace = e.keyCode === 8;
+    // const del = e.keyCode === 46;
     if (/^[a-z\s]*$/gi.test(e.target.value)) {
       if (fields.name.length <= 30)
         setError({ ...error, error: false, noName: false });
-      setFields({ ...fields, name: e.target.value });
-    } else setError({ ...error, error: true });
+      else
+        setError({ ...error, noName: fields.name.length >= 30 ? true : false });
 
-    setError({ ...error, noName: fields.name.length > 30 ? true : false });
+      setFields({ ...fields, name: e.target.value });
+    } //
+    else setError({ ...error, error: true });
+    console.log(fields.name.length);
   };
 
   const handleSeason = (e) => {
@@ -99,7 +104,12 @@ export default function CreateForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     let nameLen = fields.name.length;
-    if (nameLen >= 3 && nameLen <= 30 && fields.season !== "") {
+    if (
+      nameLen >= 3 &&
+      nameLen <= 30 &&
+      fields.season !== "" &&
+      fields.countries.length
+    ) {
       fields.name = format(fields.name);
       dispatch(createActivity(fields));
       handleClear();
@@ -139,12 +149,13 @@ export default function CreateForm() {
                     type="text"
                     value={fields.name}
                     placeholder="ex: Hiking"
+                    maxLength={30}
                     onChange={(e) => handleName(e)}
                     className={`searchBar ${styles.search_bar}`}
                   ></input>
                 </label>
                 <div className={styles.error_msg}>
-                  {error.noName && (
+                  {error.noName && !error.error && (
                     <div className={styles.error}>
                       Activity name must contain between 3 and 30 characters
                     </div>

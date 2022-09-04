@@ -53,12 +53,6 @@ router.get("/countries", async (req, res) => {
 router.get("/countries/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    /*
-    // verify DB  is empty
-    const count = await Country.count();
-    // if DB is empty, execute getCountries
-    if (!count) await getCountries();
-    */
     // once the DB has all API data, execute getCountryById
     res.json(await getCountryById(id.toUpperCase()));
   } catch (e) {

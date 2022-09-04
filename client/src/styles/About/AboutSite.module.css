@@ -5,8 +5,7 @@
 
 .link {
   text-shadow: 0px 0px 20px #777a;
-  /* color: #44f; */
-  text-decoration: underline;
+  text-decoration: underline #22f;
   font-weight: bold;
 }
 
@@ -24,7 +23,6 @@
   justify-content: center;
   font-size: 26px;
   font-weight: bold;
-  /* text-decoration: underline; */
   margin-top: 4%;
 }
 

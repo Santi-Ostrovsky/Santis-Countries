@@ -3,7 +3,6 @@ const { DataTypes } = require("sequelize");
 // Luego le inyectamos la conexión a sequelize.
 module.exports = (sequelize) => {
   // define country model
-  //
   sequelize.define(
     "country",
     {
@@ -30,7 +29,6 @@ module.exports = (sequelize) => {
       },
       capital: {
         type: DataTypes.STRING,
-        // defaultValue: this.getDataValue(name),
         allowNull: false,
         unique: "country-capital-flag",
       },
@@ -61,9 +59,6 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         allowNull: false,
       },
-      // currencies: {
-      //   type: DataTypes.STRING,
-      // },
       maps: {
         type: DataTypes.STRING,
         allowNull: false,

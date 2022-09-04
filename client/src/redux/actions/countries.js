@@ -8,7 +8,6 @@ import {
   ORDER_ALPHABETICALLY,
   ORDER_BY_POPULATION,
   SET_CURRENT_PAGE,
-  //   LOAD,
 } from "./actionTypes";
 
 const PATH = "/countries/";

@@ -14,8 +14,6 @@ export default function Activities() {
     dispatch(showActivities());
   }, [dispatch]);
 
-  //   console.log(activities);
-
   return (
     <>
       <SiteNav />

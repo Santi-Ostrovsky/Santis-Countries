@@ -109,15 +109,9 @@ select {
   width: 40%;
   margin-left: -4%;
   margin-top: 1%;
-  color: #f00;
+  color: #f10;
   text-shadow: 0px 0px 20px #000000;
   font-weight: bold;
-  position: absolute;
-}
-
-.noError {
-  margin: auto;
-  color: #0000;
   position: absolute;
 }
 

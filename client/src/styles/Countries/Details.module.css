@@ -253,7 +253,6 @@
 .back_button :hover,
 .back_inner_button :hover {
   color: #ffffffbb;
-  /* font-size: 40px; */
   text-shadow: 0px 0px 20px #000000;
   border: 2px solid #ffffff55;
   box-shadow: 0px 0px 10px 0px #ffffffbb;

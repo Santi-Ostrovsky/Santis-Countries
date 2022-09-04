@@ -184,17 +184,20 @@ export default function Details() {
                   </div>
                   <div className={styles.activityName}>{a.name}</div>
                   <div className={styles.line}>
+                    Difficulty:{" "}
                     {a.difficulty === 1
-                      ? "Difficulty: Beginner"
+                      ? "Beginner"
                       : a.difficulty === 2
-                      ? "Difficulty: Amateur"
+                      ? "Amateur"
                       : a.difficulty === 3
-                      ? "Difficulty: Intermediate"
+                      ? "Intermediate"
                       : a.difficulty === 4
-                      ? "Difficulty: Advanced"
-                      : "Difficulty: Expert"}
+                      ? "Advanced"
+                      : "Expert"}
                   </div>
-                  <div className={styles.line}>Duration: {a.duration} hs.</div>
+                  <div className={styles.line}>
+                    Duration: {a.duration} {a.duration === 1 ? "hour" : "hours"}
+                  </div>
                   <div className={styles.line}>
                     Season:{" "}
                     {a.season[0].toUpperCase() +
