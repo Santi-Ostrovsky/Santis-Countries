@@ -31,7 +31,7 @@ export default function SearchBar() {
 
   return (
     <div>
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <label>
           Search Countries by Name
           <input
