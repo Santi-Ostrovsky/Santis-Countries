@@ -1,14 +1,18 @@
 .container {
-  margin-left: 2%;
+  margin: auto;
+  margin-left: 2vw;
   margin-top: 18px;
   width: 96%;
-  height: 84%;
+  min-width: 1000px;
+  height: 84vh;
+  min-height: 400px;
   overflow: visible;
-  position: absolute;
 }
 
 .menu_container {
   width: 25%;
+  min-width: 400px;
+  margin: auto;
   margin-left: 34%;
   margin-top: -5%;
   position: relative;
