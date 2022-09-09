@@ -1,7 +1,7 @@
 .container {
   background: url(../assets/img/Compressed/error404.jpg) no-repeat 50% 50%
     #10101099;
-  background-size: 100%;
+  /* background-size: 100%; */
   object-fit: cover;
   z-index: 0;
   position: absolute;

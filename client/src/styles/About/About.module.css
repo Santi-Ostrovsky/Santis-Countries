@@ -1,7 +1,6 @@
 .container {
   background: url(../../assets/img/Compressed/about.jpg) no-repeat 50% 50%
     #10101099;
-  background-size: 100%;
   object-fit: cover;
   z-index: 0;
   position: absolute;
